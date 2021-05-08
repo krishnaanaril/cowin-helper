@@ -13,6 +13,7 @@ import { UseDistrictComponent } from './use-district/use-district.component';
 import { AddWatcherComponent } from './add-watcher/add-watcher.component';
 import { SearchAvailabilityComponent } from './search-availability/search-availability.component';
 import { AboutComponent } from './about/about.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AboutComponent } from './about/about.component';
     UseDistrictComponent,
     AddWatcherComponent,
     SearchAvailabilityComponent,
-    AboutComponent
+    AboutComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
