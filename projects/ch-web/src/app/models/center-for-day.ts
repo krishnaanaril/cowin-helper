@@ -1,6 +1,6 @@
 import { Session } from "./session";
 
-export interface Center {
+export interface CenterForDay extends Session {
     center_id: number;
     name: string;
     address: string;
@@ -13,5 +13,4 @@ export interface Center {
     from: string;
     to: string;
     fee_type: string;
-    sessions: Session[]
 }

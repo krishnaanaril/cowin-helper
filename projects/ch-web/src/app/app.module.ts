@@ -14,6 +14,7 @@ import { AddWatcherComponent } from './add-watcher/add-watcher.component';
 import { SearchAvailabilityComponent } from './search-availability/search-availability.component';
 import { AboutComponent } from './about/about.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SettingsComponent } from './settings/settings.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
