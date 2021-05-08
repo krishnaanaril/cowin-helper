@@ -1,7 +1,17 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button aria-label="Cowin Helper Menu Options">
-    <mat-icon aria-hidden="false">menu</mat-icon>
-  </button>  
-  <span>Cowin Helper</span>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<mat-drawer-container class="ch-container">
+  <mat-drawer #drawer class="ch-sidenav" mode="over">
+    <p>Auto-resizing sidenav</p>   
+  </mat-drawer>
+
+  <div class="ch-sidenav-content">
+    <mat-toolbar color="primary">
+      <button mat-icon-button aria-label="Cowin Helper Menu Options" (click)="drawer.toggle()">
+        <mat-icon aria-hidden="false">menu</mat-icon>
+      </button>  
+      <span>Cowin Helper</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
+
