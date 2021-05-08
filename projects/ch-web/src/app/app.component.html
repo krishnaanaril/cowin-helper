@@ -1,17 +1,23 @@
 <mat-drawer-container class="ch-container">
   <mat-drawer #drawer class="ch-sidenav" mode="over">
-    <p>Auto-resizing sidenav</p>   
+    <mat-list>
+      <div mat-subheader>Options</div>
+      <mat-list-item *ngFor="let option of options" [routerLink]="option.link" routerLinkActive="active" (click)="drawer.toggle()">
+        <mat-icon mat-list-icon>{{option.icon}}</mat-icon>
+        <div mat-line>{{option.label}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
   </mat-drawer>
 
   <div class="ch-sidenav-content">
     <mat-toolbar color="primary">
       <button mat-icon-button aria-label="Cowin Helper Menu Options" (click)="drawer.toggle()">
         <mat-icon aria-hidden="false">menu</mat-icon>
-      </button>  
+      </button>
       <span>Cowin Helper</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </div>
 
 </mat-drawer-container>
-
