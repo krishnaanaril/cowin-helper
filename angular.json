@@ -28,6 +28,7 @@
               "projects/ch-web/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/ch-web/src/styles.scss"
             ],
             "scripts": []
@@ -91,6 +92,7 @@
               "projects/ch-web/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/ch-web/src/styles.scss"
             ],
             "scripts": []
