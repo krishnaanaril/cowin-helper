@@ -1,4 +1,4 @@
-<div>
+<div class="px-5 py-2">
     <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
         <div>
             <mat-form-field class="ch-full-width">
@@ -14,7 +14,7 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <div>
+        <div class="py-2">
             <mat-form-field class="ch-full-width">
                 <mat-label>Choose a date</mat-label>
                 <input id="search-date" matInput formControlName="date" [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
@@ -26,12 +26,12 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <div>
+        <div class="py-2">
             <mat-checkbox id="search-is-week" formControlName="isForWeek">
                 Search for a week
             </mat-checkbox>
         </div>
-        <div>
+        <div class="flex flex-row justify-center py-5">
             <button mat-raised-button type="submit" color="primary">Search</button>
         </div>
     </form>
