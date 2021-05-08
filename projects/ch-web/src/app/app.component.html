@@ -1,5 +1,5 @@
-<mat-drawer-container class="ch-container">
-  <mat-drawer #drawer class="ch-sidenav" mode="over">
+<mat-drawer-container class="h-screen">
+  <mat-drawer #drawer class="w-4/5" mode="over">
     <mat-list>
       <div mat-subheader>Options</div>
       <mat-list-item *ngFor="let option of options" [routerLink]="option.link" routerLinkActive="active" (click)="drawer.toggle()">
@@ -10,7 +10,7 @@
     </mat-list>
   </mat-drawer>
 
-  <div class="ch-sidenav-content">
+  <div>
     <mat-toolbar color="primary">
       <button mat-icon-button aria-label="Cowin Helper Menu Options" (click)="drawer.toggle()">
         <mat-icon aria-hidden="false">menu</mat-icon>

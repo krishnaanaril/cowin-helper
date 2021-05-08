@@ -1,7 +1,7 @@
 <div class="px-5 py-2">
     <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
         <div>
-            <mat-form-field class="ch-full-width">
+            <mat-form-field class="w-full">
                 <mat-label>Pin Code</mat-label>
                 <input id="search-pin" matInput formControlName="pin" placeholder="666555">
                 <mat-error
@@ -15,7 +15,7 @@
             </mat-form-field>
         </div>
         <div class="py-2">
-            <mat-form-field class="ch-full-width">
+            <mat-form-field class="w-full">
                 <mat-label>Choose a date</mat-label>
                 <input id="search-date" matInput formControlName="date" [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

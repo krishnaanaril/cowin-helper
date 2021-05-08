@@ -1,11 +1,4 @@
-.ch-container {
-    height: 100vh;
-}
-
-.ch-sidenav {
-    width: 80vw;
-}
 
 .active {
-    background-color: yellow;
+    @apply bg-yellow-300;
 }
