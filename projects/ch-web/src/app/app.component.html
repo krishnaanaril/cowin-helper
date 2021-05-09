@@ -15,7 +15,10 @@
       <button mat-icon-button aria-label="Cowin Helper Menu Options" (click)="drawer.toggle()">
         <mat-icon aria-hidden="false">menu</mat-icon>
       </button>
-      <span>Cowin Helper</span>
+      <span class="w-full">Cowin Helper</span>
+      <button mat-icon-button aria-label="Cowin Helper Notifications">
+        <mat-icon matBadge="2" matBadgeColor="accent" matBadgeSize="small" aria-hidden="false">notifications</mat-icon>
+      </button>
     </mat-toolbar>
     <mat-progress-bar *ngIf="progressBarConfiguration.show" [color]="progressBarConfiguration.color"
         [mode]="progressBarConfiguration.mode" [value]="progressBarConfiguration.value" [bufferValue]="progressBarConfiguration.bufferValue">
