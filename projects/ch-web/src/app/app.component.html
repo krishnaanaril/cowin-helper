@@ -17,6 +17,9 @@
       </button>
       <span>Cowin Helper</span>
     </mat-toolbar>
+    <mat-progress-bar *ngIf="progressBarConfiguration.show" [color]="progressBarConfiguration.color"
+        [mode]="progressBarConfiguration.mode" [value]="progressBarConfiguration.value" [bufferValue]="progressBarConfiguration.bufferValue">
+    </mat-progress-bar>
     <router-outlet></router-outlet>
   </div>
 

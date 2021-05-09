@@ -23,26 +23,26 @@ export class CowinDataService {
 
   getDistricts(stateId: number): Observable<District[]> {
     const url = `${environment.cowin_endpoints.metaData}/districts/${stateId}`;
-    return this.httpClient.get<District[]>(url);
+    return this.httpClient.get<District[]>(url, { reportProgress: true});
   }
 
   searchAvailabilityByPin(pin: string, date: string): Observable<CenterForDay[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/findByPin?pincode=${pin}&date=${date}`;
-    return this.httpClient.get<CenterForDay[]>(url);
+    return this.httpClient.get<CenterForDay[]>(url, { reportProgress: true});
   }
 
   searchAvailabilityByDistrict(districtId: number, date: string): Observable<CenterForDay[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/findByDistrict?district_id=${districtId}&date=${date}`;
-    return this.httpClient.get<CenterForDay[]>(url);
+    return this.httpClient.get<CenterForDay[]>(url, { reportProgress: true});
   }
 
   searchAvailabilityByPinForWeek(pin: string, date: string): Observable<CenterForWeek[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/calendarByPin?pincode=${pin}&date=${date}`;
-    return this.httpClient.get<CenterForWeek[]>(url);
+    return this.httpClient.get<CenterForWeek[]>(url, { reportProgress: true});
   }
 
   searchAvailabilityByDistrictForWeek(districtId: number, date: string): Observable<CenterForWeek[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/calendarByDistrict?district_id=${districtId}&date=${date}`;
-    return this.httpClient.get<CenterForWeek[]>(url);
+    return this.httpClient.get<CenterForWeek[]>(url, { reportProgress: true});
   }
 }
