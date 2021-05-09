@@ -54,4 +54,9 @@
             <ch-day-center-info [center]="center"></ch-day-center-info>
         </div>
     </div>
+    <div *ngIf="centersForWeek?.length > 0">
+        <div *ngFor="let center of centersForWeek" class="mb-2">
+            <ch-week-center-info [center]="center"></ch-week-center-info>
+        </div>
+    </div>
 </div>

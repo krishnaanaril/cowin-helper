@@ -102,9 +102,7 @@ export class UseDistrictComponent implements OnInit {
     } else {
       this.dataService.searchAvailabilityByDistrict(searchData.selectedDistrict.district_id, dateString)
         .subscribe((result: CenterForDay[]) => {
-          this.centersForDay = result;
-          console.log(result);
-          console.log(this.centersForDay);
+          this.centersForDay = result;          
         });
     }
   }
