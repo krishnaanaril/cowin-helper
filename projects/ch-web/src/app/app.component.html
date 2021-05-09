@@ -1,0 +1,29 @@
+<mat-drawer-container class="h-screen">
+  <mat-drawer #drawer class="w-4/5" mode="over">
+    <mat-list>
+      <div mat-subheader>Options</div>
+      <mat-list-item *ngFor="let option of options" [routerLink]="option.link" routerLinkActive="active" (click)="drawer.toggle()">
+        <mat-icon mat-list-icon>{{option.icon}}</mat-icon>
+        <div mat-line>{{option.label}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-drawer>
+
+  <div>
+    <mat-toolbar color="primary">
+      <button mat-icon-button aria-label="Cowin Helper Menu Options" (click)="drawer.toggle()">
+        <mat-icon aria-hidden="false">menu</mat-icon>
+      </button>
+      <span class="w-full">Cowin Helper</span>
+      <button *ngIf="false" mat-icon-button aria-label="Cowin Helper Notifications">
+        <mat-icon matBadge="2" matBadgeColor="accent" matBadgeSize="small" aria-hidden="false">notifications</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-progress-bar *ngIf="progressBarConfiguration.show" [color]="progressBarConfiguration.color"
+        [mode]="progressBarConfiguration.mode" [value]="progressBarConfiguration.value" [bufferValue]="progressBarConfiguration.bufferValue">
+    </mat-progress-bar>
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>

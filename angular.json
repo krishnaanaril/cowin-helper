@@ -1,0 +1,134 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ch-web": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ch-web",
+      "sourceRoot": "projects/ch-web/src",
+      "prefix": "ch",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ch-web",
+            "index": "projects/ch-web/src/index.html",
+            "main": "projects/ch-web/src/main.ts",
+            "polyfills": "projects/ch-web/src/polyfills.ts",
+            "tsConfig": "projects/ch-web/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/ch-web/src/favicon.ico",
+              "projects/ch-web/src/assets",
+              "projects/ch-web/src/manifest.webmanifest"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/ch-web/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ch-web/src/environments/environment.ts",
+                  "with": "projects/ch-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/ch-web/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ch-web:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ch-web:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ch-web:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ch-web/src/test.ts",
+            "polyfills": "projects/ch-web/src/polyfills.ts",
+            "tsConfig": "projects/ch-web/tsconfig.spec.json",
+            "karmaConfig": "projects/ch-web/karma.conf.js",
+            "assets": [
+              "projects/ch-web/src/favicon.ico",
+              "projects/ch-web/src/assets",
+              "projects/ch-web/src/manifest.webmanifest"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/ch-web/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ch-web/tsconfig.app.json",
+              "projects/ch-web/tsconfig.spec.json",
+              "projects/ch-web/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ch-web/e2e/protractor.conf.js",
+            "devServerTarget": "ch-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ch-web:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ch-web"
+}

@@ -1,0 +1,51 @@
+<div class="px-5 py-2">
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+        <div>
+            <mat-form-field class="w-full">
+                <mat-label>Pin Code</mat-label>
+                <input id="search-pin" matInput formControlName="pin" placeholder="666555">
+                <mat-error
+                        *ngIf="searchForm.get('pin').hasError('required')">
+                        Pin Code is required
+                </mat-error>
+                <mat-error
+                        *ngIf="searchForm.get('pin').hasError('pattern')">
+                        Pin Code is not valid
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="py-2">
+            <mat-form-field class="w-full">
+                <mat-label>Choose a date</mat-label>
+                <input id="search-date" matInput formControlName="date" [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error
+                        *ngIf="searchForm.get('date').hasError('required')">
+                        Date is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="py-2">
+            <mat-checkbox id="search-is-week" formControlName="isForWeek">
+                Search for a week
+            </mat-checkbox>
+        </div>
+        <div class="flex flex-row justify-center py-5">
+            <button mat-raised-button type="submit" color="primary">Search</button>
+        </div>
+    </form>
+</div>
+<mat-divider></mat-divider>
+<div>
+    <div *ngIf="centersForDay?.length > 0">
+        <div *ngFor="let center of centersForDay" class="mb-2">
+            <ch-day-center-info [center]="center"></ch-day-center-info>
+        </div>
+    </div>
+    <div *ngIf="centersForWeek?.length > 0">
+        <div *ngFor="let center of centersForWeek" class="mb-2">
+            <ch-week-center-info [center]="center"></ch-week-center-info>
+        </div>
+    </div>
+</div>
