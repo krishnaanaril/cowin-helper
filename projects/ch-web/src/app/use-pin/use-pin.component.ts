@@ -40,7 +40,7 @@ export class UsePinComponent implements OnInit {
 
   onSubmit() {
     const searchData: SearchByPinData = this.searchForm.value;
-    const dateString: string = `${searchData.date.getDate()}-${searchData.date.getMonth() + 1}-${searchData.date.getFullYear()}`
+    const dateString: string = `${searchData.date.getDate()}-${searchData.date.getMonth() + 1}-${searchData.date.getFullYear()}`;
     if (searchData.isForWeek) {
       this.dataService.searchAvailabilityByPinForWeek(searchData.pin, dateString).subscribe((res) => console.log(res));
     } else {
