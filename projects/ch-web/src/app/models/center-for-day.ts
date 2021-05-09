@@ -12,5 +12,6 @@ export interface CenterForDay extends Session {
     long: number;
     from: string;
     to: string;
+    fee: string;
     fee_type: string;
 }

@@ -16,6 +16,7 @@ import { AboutComponent } from './about/about.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpProgressInterceptor } from './http-progress.interceptor';
+import { DayCenterInfoComponent } from './day-center-info/day-center-info.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpProgressInterceptor } from './http-progress.interceptor';
     AddWatcherComponent,
     SearchAvailabilityComponent,
     AboutComponent,
-    SettingsComponent
+    SettingsComponent,
+    DayCenterInfoComponent
   ],
   imports: [
     BrowserModule,

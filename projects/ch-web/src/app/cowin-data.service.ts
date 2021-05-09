@@ -25,27 +25,31 @@ export class CowinDataService {
 
   getDistricts(stateId: number): Observable<District[]> {
     const url = `${environment.cowin_endpoints.metaData}/districts/${stateId}`;
-    return this.httpClient.get<District[]>(url, { reportProgress: true}).pipe(
+    return this.httpClient.get<District[]>(url, { reportProgress: true }).pipe(
       map((result: any) => result.districts));
   }
 
   searchAvailabilityByPin(pin: string, date: string): Observable<CenterForDay[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/findByPin?pincode=${pin}&date=${date}`;
-    return this.httpClient.get<CenterForDay[]>(url, { reportProgress: true});
+    return this.httpClient.get<CenterForDay[]>(url, { reportProgress: true }).pipe(
+      map((result: any) => result.sessions));
   }
 
   searchAvailabilityByDistrict(districtId: number, date: string): Observable<CenterForDay[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/findByDistrict?district_id=${districtId}&date=${date}`;
-    return this.httpClient.get<CenterForDay[]>(url, { reportProgress: true});
+    return this.httpClient.get<CenterForDay[]>(url, { reportProgress: true }).pipe(
+      map((result: any) => result.sessions));
   }
 
   searchAvailabilityByPinForWeek(pin: string, date: string): Observable<CenterForWeek[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/calendarByPin?pincode=${pin}&date=${date}`;
-    return this.httpClient.get<CenterForWeek[]>(url, { reportProgress: true});
+    return this.httpClient.get<CenterForWeek[]>(url, { reportProgress: true }).pipe(
+      map((result: any) => result.centers));
   }
 
   searchAvailabilityByDistrictForWeek(districtId: number, date: string): Observable<CenterForWeek[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/calendarByDistrict?district_id=${districtId}&date=${date}`;
-    return this.httpClient.get<CenterForWeek[]>(url, { reportProgress: true});
+    return this.httpClient.get<CenterForWeek[]>(url, { reportProgress: true }).pipe(
+      map((result: any) => result.centers));
   }
 }
