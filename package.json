@@ -1,6 +1,6 @@
 {
   "name": "cowin-helper",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --project=ch-web --port=5010",
@@ -22,6 +22,7 @@
     "@angular/platform-browser": "~11.2.13",
     "@angular/platform-browser-dynamic": "~11.2.13",
     "@angular/router": "~11.2.13",
+    "@angular/service-worker": "~11.2.13",
     "idb-keyval": "^5.0.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

@@ -25,7 +25,8 @@
             "aot": true,
             "assets": [
               "projects/ch-web/src/favicon.ico",
-              "projects/ch-web/src/assets"
+              "projects/ch-web/src/assets",
+              "projects/ch-web/src/manifest.webmanifest"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
@@ -59,7 +60,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/ch-web/ngsw-config.json"
             }
           }
         },
@@ -89,7 +92,8 @@
             "karmaConfig": "projects/ch-web/karma.conf.js",
             "assets": [
               "projects/ch-web/src/favicon.ico",
-              "projects/ch-web/src/assets"
+              "projects/ch-web/src/assets",
+              "projects/ch-web/src/manifest.webmanifest"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
