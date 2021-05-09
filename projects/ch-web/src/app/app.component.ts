@@ -12,9 +12,9 @@ export class AppComponent implements OnInit {
 
   title = 'ch-web';
   options: MenuOption[] = [
-    { icon: 'home', label: 'Home', link: '/dashboard'},
+    // { icon: 'home', label: 'Home', link: '/dashboard'},
     { icon: 'search', label: 'Search', link: '/search'},
-    { icon: 'settings', label: 'Settings', link: '/settings'},
+    // { icon: 'settings', label: 'Settings', link: '/settings'},
     { icon: 'info', label: 'About', link: '/about'},    
   ];
   progressBarConfiguration: ProgressBarConfiguration;
