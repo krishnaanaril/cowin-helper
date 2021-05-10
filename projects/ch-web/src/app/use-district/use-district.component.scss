@@ -1,0 +1,25 @@
+.w-full {
+    width: 100%;
+}
+
+.px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.btn-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
