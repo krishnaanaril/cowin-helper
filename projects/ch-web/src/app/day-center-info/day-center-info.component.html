@@ -1,24 +1,13 @@
-<div class="container mx-2 px-3 rounded-lg shadow-lg">
-    <div class="flex flex-row justify-between">
-        <div class="py-2">
-            <h2 class="text-lg font-bold">{{center.name}}</h2>
-            <h3>{{center.address}}, {{center.district_name}}, {{center.pincode}}</h3>
+<mat-card class="px-2 py-2">
+
+    <div class="header-block">
+        <div class="icon-wrapper">
+            <mat-icon class="icon-place">place</mat-icon>
         </div>
-        <!-- <div class="">
-            <div class="bg-green-200 rounded-full text-center align-middle w-10 h-10 leading-10">
-                {{center.available_capacity}}
-            </div>
-        </div> -->
+        <div>
+            <h2 class="center-name">{{center.name}}</h2>
+            <h3 class="center-address">{{center.address}}, {{center.district_name}}, {{center.pincode}}</h3>
+        </div>
     </div>
-    <!-- <div class="flex flex-row justify-around">
-        <div>
-            <h2>{{center.min_age_limit}}+</h2>
-        </div>
-        <div>
-            <h2>{{center.vaccine}}</h2>
-        </div>
-        <div>
-            <h2>{{center.fee_type}}</h2>
-        </div>
-    </div> -->
-</div>
+
+</mat-card>
