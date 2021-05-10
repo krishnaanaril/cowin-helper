@@ -60,4 +60,14 @@
             <ch-week-center-info [center]="center"></ch-week-center-info>
         </div>
     </div>
+    <mat-card *ngIf="showNoCenterMessage">
+        <div class="header-block">
+            <div class="icon-wrapper">
+                <mat-icon color="accent" class="icon-place">error</mat-icon>
+            </div>
+            <div class="info-text">
+                No centers found
+            </div>
+        </div>
+    </mat-card>
 </div>

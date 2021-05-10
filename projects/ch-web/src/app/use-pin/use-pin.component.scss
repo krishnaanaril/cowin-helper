@@ -31,3 +31,17 @@
 .mb-2 {
     margin-bottom: 0.5rem;
 }
+
+.header-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: rgba(255, 251, 235, 1); //bg-yellow-50
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.info-text {
+    font-size: 1.25rem;
+    margin-left: 1rem;
+}
