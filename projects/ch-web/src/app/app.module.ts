@@ -20,6 +20,7 @@ import { DayCenterInfoComponent } from './day-center-info/day-center-info.compon
 import { WeekCenterInfoComponent } from './week-center-info/week-center-info.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { environment } from '../environments/environment';
     })
   ],
   providers: [
+    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: HttpProgressInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

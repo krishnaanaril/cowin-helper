@@ -1,8 +1,67 @@
-<div class="container mx-2 px-3 rounded-lg shadow-lg">
-    <div class="flex flex-row justify-between">
-        <div class="py-2">
-            <h2 class="text-lg font-bold">{{center.name}}</h2>
-            <h3>{{center.address}}, {{center.district_name}}, {{center.pincode}}</h3>
-        </div>        
-    </div>    
-</div>
+<mat-card class="px-2 py-2">
+    <div class="header-block">
+        <div class="icon-wrapper">
+            <mat-icon color="accent" class="icon-place">place</mat-icon>
+        </div>
+        <div>
+            <h2 class="center-name">{{center.name}}</h2>
+            <h3 class="center-address">{{center.address}}, {{center.district_name}}, {{center.pincode}}</h3>
+            <h3 class="center-address">{{center.state_name}}</h3>
+            <h3 class="center-address time-section">
+                <mat-icon color="warn">access_time</mat-icon>
+                <span>{{'1970-01-01T' + center.from + 'Z' | date:'shortTime':'GMT'}} - {{'1970-01-01T' + center.to + 'Z' | date:'shortTime':'GMT'}}</span>
+            </h3>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+        <div *ngFor="let session of center.sessions" class="session-block">
+            <h2 class="center-name">{{session.date}}</h2>
+            <div class="sub-info py-2">
+                <div class="info-block medication">
+                    <div class="icon-mini-wrapper">
+                        <mat-icon color="accent" class="icon-medication">medication</mat-icon>
+                    </div>
+                    <div class="info-block-text">
+                        <div>{{session.vaccine}}</div>
+                        <div>Vaccine</div>
+                    </div>
+                </div>
+                <div class="info-block chair">
+                    <div class="icon-mini-wrapper">
+                        <mat-icon color="primary" class="icon-medication">chair</mat-icon>
+                    </div>
+                    <div class="info-block-text">
+                        <div>
+                            {{session.available_capacity}}
+                        </div>
+                        <div>Jabs</div>
+                    </div>
+                </div>
+                <div class="info-block people">
+                    <div class="icon-mini-wrapper">
+                        <mat-icon color="accent" class="icon-medication">people</mat-icon>
+                    </div>
+                    <div class="info-block-text">
+                        <div>
+                            {{session.min_age_limit}}<span>+</span>
+                        </div>
+                        <div>Age</div>
+                    </div>
+
+                </div>
+                <div class="info-block payment">
+                    <div class="icon-mini-wrapper">
+                        <mat-icon color="primary" class="icon-medication">payment</mat-icon>
+                    </div>
+                    <div class="info-block-text">
+                        <div>
+                            {{center.fee_type}}
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

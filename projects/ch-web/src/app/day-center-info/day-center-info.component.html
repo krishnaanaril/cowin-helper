@@ -8,6 +8,10 @@
             <h2 class="center-name">{{center.name}}</h2>
             <h3 class="center-address">{{center.address}}, {{center.district_name}}, {{center.pincode}}</h3>
             <h3 class="center-address">{{center.state_name}}</h3>
+            <h3 class="center-address time-section">
+                <mat-icon color="warn">access_time</mat-icon>
+                <span>{{'1970-01-01T' + center.from + 'Z' | date:'shortTime':'GMT'}} - {{'1970-01-01T' + center.to + 'Z' | date:'shortTime':'GMT'}}</span>
+            </h3>
         </div>
     </div>
     <div class="sub-info py-2">
@@ -49,16 +53,15 @@
             </div>
             <div class="info-block-text">
                 <div>
-                    <span *ngIf="center.fee != '0'">&#8377;</span>
-                    {{center.fee == "0"? center.fee_type : center.fee}}
+                    {{center.fee_type}}
                 </div>
                 <div></div>
             </div>
 
         </div>
     </div>
-    <mat-divider></mat-divider>
-    <div class="slot-block">
+    <mat-divider *ngIf="false"></mat-divider>
+    <div *ngIf="false" class="slot-block">
         <h2 class="slot-title">Slots</h2>
         <mat-chip-list aria-label="Vaccine Slots">
             <mat-chip *ngFor="let slot of center.slots" color="primary" disableRipple="true" selected>{{slot}}</mat-chip>
