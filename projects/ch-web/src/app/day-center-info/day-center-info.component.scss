@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    background-color: rgba(209, 250, 229, 1); //bg-yellow-200
+    background-color: rgba(255, 251, 235, 1); //bg-yellow-50
     padding: 1rem;
     border-radius: 1rem;
 }
@@ -41,4 +41,66 @@ h2, h3 {
 .py-2 {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+}
+
+.sub-info {    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;    
+
+    div {
+        min-width: 17%;
+    }
+    
+}
+
+.icon-mini-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+
+.info-block {
+    border-radius: 0.75rem;    
+    padding: 0.75rem 0.5rem;
+}
+
+.medication {    
+    background-color: rgba(236, 253, 245, 1); // bg-green-50    
+}
+
+.chair {    
+    background-color: rgba(254, 242, 242, 1); // bg-red-50    
+}
+
+.people {
+    background-color: rgba(239, 246, 255, 1); // bg-blue-50
+}
+
+.payment {    
+    background-color: rgba(252, 231, 243, 1); // bg-pink-50
+}
+
+.info-block-text {
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.5rem;
+    div:first-child, span {
+        font-weight: bold;
+    }
+    div:last-child {
+        font-size: 0.75rem;
+        color: rgba(156, 163, 175, 1);// txt-gray-400
+    }
+}
+
+.slot-block {
+    padding: 1rem 0;
+}
+
+.slot-title {
+    @extend .center-name;
+    padding: 0 0 0.5rem 0.5rem;
 }

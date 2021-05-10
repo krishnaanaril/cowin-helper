@@ -2,12 +2,66 @@
 
     <div class="header-block">
         <div class="icon-wrapper">
-            <mat-icon class="icon-place">place</mat-icon>
+            <mat-icon color="accent" class="icon-place">place</mat-icon>
         </div>
         <div>
             <h2 class="center-name">{{center.name}}</h2>
             <h3 class="center-address">{{center.address}}, {{center.district_name}}, {{center.pincode}}</h3>
+            <h3 class="center-address">{{center.state_name}}</h3>
         </div>
     </div>
+    <div class="sub-info py-2">
+        <div class="info-block medication">
+            <div class="icon-mini-wrapper">
+                <mat-icon color="accent" class="icon-medication">medication</mat-icon>
+            </div>
+            <div class="info-block-text">
+                <div>{{center.vaccine}}</div>
+                <div>Vaccine</div>
+            </div>
+        </div>
+        <div class="info-block chair">
+            <div class="icon-mini-wrapper">
+                <mat-icon color="primary" class="icon-medication">chair</mat-icon>
+            </div>
+            <div class="info-block-text">
+                <div>
+                    {{center.available_capacity}}
+                </div>
+                <div>Jabs</div>
+            </div>
+        </div>
+        <div class="info-block people">
+            <div class="icon-mini-wrapper">
+                <mat-icon color="accent" class="icon-medication">people</mat-icon>
+            </div>
+            <div class="info-block-text">
+                <div>
+                    {{center.min_age_limit}}<span>+</span>
+                </div>
+                <div>Age</div>
+            </div>
 
+        </div>
+        <div class="info-block payment">
+            <div class="icon-mini-wrapper">
+                <mat-icon color="primary" class="icon-medication">payment</mat-icon>
+            </div>
+            <div class="info-block-text">
+                <div>
+                    <span *ngIf="center.fee != '0'">&#8377;</span>
+                    {{center.fee == "0"? center.fee_type : center.fee}}
+                </div>
+                <div></div>
+            </div>
+
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="slot-block">
+        <h2 class="slot-title">Slots</h2>
+        <mat-chip-list aria-label="Vaccine Slots">
+            <mat-chip *ngFor="let slot of center.slots" color="primary" disableRipple="true" selected>{{slot}}</mat-chip>
+        </mat-chip-list>
+    </div>
 </mat-card>
