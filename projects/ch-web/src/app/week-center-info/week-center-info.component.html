@@ -14,54 +14,19 @@
         </div>
     </div>
     <mat-divider></mat-divider>
-    <div>
-        <div *ngFor="let session of center.sessions" class="session-block">
-            <h2 class="m-0 text-lg">{{session.date}}</h2>
-            <div class="sub-info py-2">
-                <div class="info-block medication">
-                    <div class="icon-mini-wrapper">
-                        <mat-icon color="accent" class="icon-medication">medication</mat-icon>
-                    </div>
-                    <div class="info-block-text">
-                        <div>{{session.vaccine}}</div>
-                        <div>Vaccine</div>
-                    </div>
+    <div class="flex flex-row justify-start overflow-x-scroll py-3">
+        <div *ngFor="let session of center.sessions" class="px-2 bg-green-50 mr-4 rounded-lg">
+            <div class="mb-2">
+                <div class="text-center text-sm font-semibold py-2">
+                    {{session.date | dateFromString | date:'MMM'}}
                 </div>
-                <div class="info-block chair">
-                    <div class="icon-mini-wrapper">
-                        <mat-icon color="primary" class="icon-medication">chair</mat-icon>
-                    </div>
-                    <div class="info-block-text">
-                        <div>
-                            {{session.available_capacity}}
-                        </div>
-                        <div>Jabs</div>
-                    </div>
+                <div class="text-center pt-0 pb-3 text-2xl font-bold">
+                    {{session.date | dateFromString | date:'d'}}
                 </div>
-                <div class="info-block people">
-                    <div class="icon-mini-wrapper">
-                        <mat-icon color="accent" class="icon-medication">people</mat-icon>
-                    </div>
-                    <div class="info-block-text">
-                        <div>
-                            {{session.min_age_limit}}<span>+</span>
-                        </div>
-                        <div>Age</div>
-                    </div>
-
+                <div class="pb-2">
+                    <button mat-flat-button class="bg-green-600 text-gray-50 font-semibold focus:outline-none" (click)="viewCenterDetails(session)">Details</button>
                 </div>
-                <div class="info-block payment">
-                    <div class="icon-mini-wrapper">
-                        <mat-icon color="primary" class="icon-medication">payment</mat-icon>
-                    </div>
-                    <div class="info-block-text">
-                        <div>
-                            {{center.fee_type}}
-                        </div>
-                        <div></div>
-                    </div>
-                </div>
-            </div>
+            </div>            
         </div>
     </div>
 </mat-card>

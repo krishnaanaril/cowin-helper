@@ -1,0 +1,53 @@
+<h1 *ngIf="session" mat-dialog-title>
+  {{session.date | dateFromString | date:'MMMM d, y'}}
+</h1>
+<div *ngIf="session" mat-dialog-content>
+  <div class="grid grid-cols-2 gap-4 py-3">
+    <div class="rounded-xl py-3 px-2 bg-green-50 mb-2">
+      <div class="flex align-baseline justify-evenly">
+        <mat-icon color="accent" class="icon-medication">medication</mat-icon>
+      </div>
+      <div class="info-block-text">
+        <div class="font-semibold text-center">{{session.vaccine}}</div>
+        <div class="text-xs text-gray-400 text-center">Vaccine</div>
+      </div>
+    </div>
+    <div class="rounded-xl py-3 px-2 bg-red-50 mb-2">
+      <div class="flex align-baseline justify-evenly">
+        <mat-icon color="primary" class="icon-medication">chair</mat-icon>
+      </div>
+      <div class="info-block-text">
+        <div class="font-semibold text-center">
+          {{session.available_capacity}}
+        </div>
+        <div class="text-xs text-gray-400 text-center">Jabs</div>
+      </div>
+    </div>
+    <div class="rounded-xl py-3 px-2 bg-blue-50">
+      <div class="flex align-baseline justify-evenly">
+        <mat-icon color="accent" class="icon-medication">people</mat-icon>
+      </div>
+      <div class="info-block-text">
+        <div class="font-semibold text-center">
+          {{session.min_age_limit}}<span>+</span>
+        </div>
+        <div class="text-xs text-gray-400 text-center">Age</div>
+      </div>
+
+    </div>
+    <div class="rounded-xl py-3 px-2 bg-pink-50">
+      <div class="flex align-baseline justify-evenly">
+        <mat-icon color="primary" class="icon-medication">payment</mat-icon>
+      </div>
+      <div class="info-block-text">
+        <div class="font-semibold text-center">
+          {{session.fee_type}}
+        </div>
+        <div></div>
+      </div>
+    </div> 
+  </div>
+</div>
+<div mat-dialog-actions class="flex flex-row justify-center">
+  <button mat-stroked-button mat-dialog-close class="focus:outline-none">Close</button>
+</div>
