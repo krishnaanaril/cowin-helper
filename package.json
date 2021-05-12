@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --project=ch-web --port=5010",
+    "start:prod": "ng serve --prod --project=ch-web --port=5010",
     "build": "ng build",
     "build:prod": "cross-env NODE_ENV=production ng build --prod",
     "test": "ng test",
