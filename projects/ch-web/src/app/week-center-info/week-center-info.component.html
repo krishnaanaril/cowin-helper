@@ -1,13 +1,13 @@
 <mat-card class="px-2 py-2">
-    <div class="header-block">
-        <div class="icon-wrapper">
+    <div class="flex flex-row justify-start bg-yellow-50 p-4 rounded-2xl">
+        <div class="flex align-baseline p-2">
             <mat-icon color="accent" class="icon-place">place</mat-icon>
         </div>
         <div>
-            <h2 class="center-name">{{center.name}}</h2>
-            <h3 class="center-address">{{center.address}}, {{center.district_name}}, {{center.pincode}}</h3>
-            <h3 class="center-address">{{center.state_name}}</h3>
-            <h3 class="center-address time-section">
+            <h2 class="m-0 text-lg">{{center.name}}</h2>
+            <h3 class="m-0 text-base text-gray-400">{{center.address}}, {{center.district_name}}, {{center.pincode}}</h3>
+            <h3 class="m-0 text-base text-gray-400">{{center.state_name}}</h3>
+            <h3 class="m-0 text-base text-gray-400 time-section">
                 <mat-icon color="warn">access_time</mat-icon>
                 <span>{{'1970-01-01T' + center.from + 'Z' | date:'shortTime':'GMT'}} - {{'1970-01-01T' + center.to + 'Z' | date:'shortTime':'GMT'}}</span>
             </h3>
@@ -16,7 +16,7 @@
     <mat-divider></mat-divider>
     <div>
         <div *ngFor="let session of center.sessions" class="session-block">
-            <h2 class="center-name">{{session.date}}</h2>
+            <h2 class="m-0 text-lg">{{session.date}}</h2>
             <div class="sub-info py-2">
                 <div class="info-block medication">
                     <div class="icon-mini-wrapper">
