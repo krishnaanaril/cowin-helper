@@ -15,10 +15,10 @@ export class CowinDataService {
 
   constructor(
     private httpClient: HttpClient
-  ) { }
+  ) { }  
 
   getStates(): Observable<State[]> {
-    const url = `${environment.cowin_endpoints.metaData}/states`;
+    const url = `${environment.cowin_endpoints.metaData}/states`;    
     return this.httpClient.get<State[]>(url).pipe(
       map((result: any) => result.states));
   }
@@ -32,24 +32,37 @@ export class CowinDataService {
   searchAvailabilityByPin(pin: string, date: string): Observable<CenterForDay[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/findByPin?pincode=${pin}&date=${date}`;
     return this.httpClient.get<CenterForDay[]>(url, { reportProgress: true }).pipe(
-      map((result: any) => result.sessions));
+      map((result: any) => this.filterOutBookedCentersInDay(result.sessions)));
   }
 
   searchAvailabilityByDistrict(districtId: number, date: string): Observable<CenterForDay[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/findByDistrict?district_id=${districtId}&date=${date}`;
     return this.httpClient.get<CenterForDay[]>(url, { reportProgress: true }).pipe(
-      map((result: any) => result.sessions));
+      map((result: any) => this.filterOutBookedCentersInDay(result.sessions)));
   }
 
   searchAvailabilityByPinForWeek(pin: string, date: string): Observable<CenterForWeek[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/calendarByPin?pincode=${pin}&date=${date}`;
     return this.httpClient.get<CenterForWeek[]>(url, { reportProgress: true }).pipe(
-      map((result: any) => result.centers));
+      map((result: any) => this.filterOutBookedCentersInWeek(result.centers)));
   }
 
   searchAvailabilityByDistrictForWeek(districtId: number, date: string): Observable<CenterForWeek[]> {
     const url = `${environment.cowin_endpoints.appointment_availability}/calendarByDistrict?district_id=${districtId}&date=${date}`;
     return this.httpClient.get<CenterForWeek[]>(url, { reportProgress: true }).pipe(
-      map((result: any) => result.centers));
+      map((result: any) => this.filterOutBookedCentersInWeek(result.centers)));
+  }
+
+  private filterOutBookedCentersInWeek(centers: CenterForWeek[]) : CenterForWeek[] {
+    return centers.filter((center)=>{
+      center.sessions = center.sessions.filter(session => session.available_capacity > 0);
+      return center.sessions?.length > 0;
+    });
+  }
+
+  private filterOutBookedCentersInDay(centers: CenterForDay[]) : CenterForDay[] {
+    return centers.filter((center)=>{      
+      return center.available_capacity > 0;
+    });
   }
 }
