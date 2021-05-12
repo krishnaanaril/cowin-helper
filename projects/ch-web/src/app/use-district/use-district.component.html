@@ -3,7 +3,7 @@
         <div>
             <mat-form-field class="w-full">
                 <mat-label>State</mat-label>
-                <input id="search-state" type="text" placeholder="Pick state" aria-label="State" matInput
+                <input id="search-state" type="text" class="focus:ring-transparent" placeholder="Pick state" aria-label="State" matInput
                     formControlName="selectedState" [matAutocomplete]="auto">
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayStateFn"
                     (optionSelected)="onStateSelectionChange($event)">
@@ -16,7 +16,7 @@
         <div class="py-2">
             <mat-form-field class="w-full">
                 <mat-label>District</mat-label>
-                <input id="search-district" type="text" placeholder="Pick district" aria-label="District" matInput
+                <input id="search-district" type="text" class="focus:ring-transparent" placeholder="Pick district" aria-label="District" matInput
                     formControlName="selectedDistrict" [matAutocomplete]="autoDistrict">
                 <mat-autocomplete autoActiveFirstOption #autoDistrict="matAutocomplete"
                     [displayWith]="displayDistrictFn">
@@ -43,8 +43,8 @@
                 Search for a week
             </mat-checkbox>
         </div>
-        <div class="btn-block py-5">
-            <button mat-raised-button type="submit" color="primary">Search</button>
+        <div class="flex flex-row justify-center py-5">
+            <button mat-raised-button class="font-semibold" type="submit" color="primary">Search</button>
         </div>
     </form>
 </div>
@@ -61,11 +61,11 @@
         </div>
     </div>
     <mat-card *ngIf="showNoCenterMessage">
-        <div class="header-block">
+        <div class="flex flex-row justify-start bg-yellow-50 p-4 rounded-2xl">
             <div class="icon-wrapper">
                 <mat-icon color="accent" class="icon-place">error</mat-icon>
             </div>
-            <div class="info-text">
+            <div class="text-lg ml-4">
                 No centers found
             </div>
         </div>
