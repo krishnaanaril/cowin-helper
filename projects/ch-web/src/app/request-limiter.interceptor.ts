@@ -8,12 +8,15 @@ import {
 import { EMPTY, from, iif, Observable, of } from 'rxjs';
 import { IdbService } from './idb.service';
 import { RequestQueue } from './models/request-queue';
-import { flatMap, map, mergeMap, switchMap } from 'rxjs/operators';
+import { concatMap, flatMap, map, mergeMap, switchMap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { RequestLimitAlertComponent } from './request-limit-alert/request-limit-alert.component';
 
 @Injectable()
 export class RequestLimiterInterceptor implements HttpInterceptor {
 
   constructor(
+    public dialog: MatDialog,
     private storageService: IdbService
   ) {}
 
@@ -38,7 +41,7 @@ export class RequestLimiterInterceptor implements HttpInterceptor {
         while(activeRequests.length > 0 && this.checkTimeDifference(activeRequests[0].requestedTime, currentDate)) {
           activeRequests.shift();
         };      
-        if(activeRequests.length < 10) {
+        if(activeRequests.length < 5) {
           const currentRequest: RequestQueue = {
             requestedTime: currentDate,
             url: request.url
@@ -46,7 +49,7 @@ export class RequestLimiterInterceptor implements HttpInterceptor {
           activeRequests.push(currentRequest);
           return this.proceedRequest(request, activeRequests);
         }
-        return EMPTY;
+        return this.dialog.open(RequestLimitAlertComponent).afterClosed().pipe(concatMap(() => EMPTY));        
       }),
       mergeMap((result) => next.handle(result))      
     );

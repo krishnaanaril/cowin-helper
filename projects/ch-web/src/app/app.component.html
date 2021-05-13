@@ -9,7 +9,7 @@
       <mat-divider></mat-divider>
     </mat-list>
     <mat-divider></mat-divider>
-    <div *ngIf="(activeRequests | async)">
+    <div *ngIf="(activeRequests | async)" class="h-12 text-center py-2 align-baseline">
       {{activeRequests | async}} requests in last 5 mins.
     </div>
   </mat-drawer>

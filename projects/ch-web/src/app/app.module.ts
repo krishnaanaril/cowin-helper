@@ -24,6 +24,7 @@ import { DatePipe } from '@angular/common';
 import { DateFromStringPipe } from './date-from-string.pipe';
 import { WeekCenterDetailsComponent } from './week-center-details/week-center-details.component';
 import { RequestLimiterInterceptor } from './request-limiter.interceptor';
+import { RequestLimitAlertComponent } from './request-limit-alert/request-limit-alert.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { RequestLimiterInterceptor } from './request-limiter.interceptor';
     DayCenterInfoComponent,
     WeekCenterInfoComponent,
     DateFromStringPipe,
-    WeekCenterDetailsComponent
+    WeekCenterDetailsComponent,
+    RequestLimitAlertComponent
   ],
   imports: [
     BrowserModule,
