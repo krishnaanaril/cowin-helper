@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { set, get, update } from 'idb-keyval';
+import { set, get, update, del } from 'idb-keyval';
 import { from } from 'rxjs';
 
 @Injectable({
@@ -15,5 +15,13 @@ export class IdbService {
 
   updateItem(key: string, val: any) {
     return from(update(key, (oldValue) => val));
+  }
+
+  getItem(key: string) {
+    return from(get(key));
+  }
+
+  deleteItem(key: string) {
+    return from(del(key));
   }
 }
