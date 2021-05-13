@@ -1,9 +1,45 @@
 <div>
-    <div *ngFor="let watch of (activeWatches$ | async)">
-        <mat-card>
-            {{watch.id}}
-        </mat-card>
-    </div>
+    <mat-list>
+        <div mat-subheader>Active Watches</div>
+        <mat-list-item class="my-2" *ngFor="let watch of (activeWatches$ | async)">
+            <mat-icon color="accent" mat-list-icon>track_changes</mat-icon>
+            <div mat-line>
+                <div>
+                    <span *ngIf="watch.pin; else displayDistrict" class="font-semibold text-gray-700">Pin:
+                        {{watch.pin}}</span>
+                    <ng-template #displayDistrict>
+                        <span class="font-semibold text-gray-700">{{watch.district}}, {{watch.state}}</span>
+                    </ng-template>
+                </div>
+            </div>
+            <div mat-line class="text-gray-500 text-base">Last updated: {{watch.lastUpdated | date:'d/M/y, h:mm a'}} </div>
+            <div mat-line>
+                <div>
+                    <span class="align-text-bottom text-green-700 font-semibold">4 Centers</span>
+                    <mat-icon mat-list-icon class="text-green-700 font-semibold">arrow_upward</mat-icon>
+                    <span class="align-text-bottom text-red-700 font-semibold">45 Jabs</span>
+                    <mat-icon mat-list-icon class="text-red-700 font-semibold">arrow_downward</mat-icon>
+                </div>
+            </div>
+            <div>
+                <button class="focus:outline-none" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Watch menu options">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <!-- <button class="focus:outline-none" mat-menu-item>
+                        <mat-icon>edit</mat-icon>
+                        <span>Edit</span>
+                    </button> -->
+                    <button class="focus:outline-none" mat-menu-item (click)="deleteWatch(watch.id)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                    </button>
+                </mat-menu>
+
+            </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </mat-list>
 </div>
 <div class="fixed bottom-7 right-7">
     <button mat-fab aria-label="Add new repository" class="focus:outline-none" (click)="addWatch()">

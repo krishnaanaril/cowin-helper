@@ -1,6 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { AddWatcherComponent } from '../add-watcher/add-watcher.component';
 import { IdbService } from '../idb.service';
@@ -19,7 +20,8 @@ export class DashBoardComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private watchService: WatchService,
-    private dbService: IdbService
+    private dbService: IdbService,
+    private snackBar: MatSnackBar
   ) { }
 
   activeWatches$: Observable<WatchInfo[]>;
@@ -36,6 +38,16 @@ export class DashBoardComponent implements OnInit {
       .subscribe(()=>{
         this.activeWatches$ = this.watchService.getWatches();
       });
+  }
+
+  deleteWatch(watchId: string) {
+    this.watchService.deleteWatch(watchId)
+      .subscribe(()=>{
+        this.activeWatches$ = this.watchService.getWatches();
+        this.snackBar.open("Watch deleted successfully", '', {
+          duration: 2000
+        });
+      })
   }
 
 }
