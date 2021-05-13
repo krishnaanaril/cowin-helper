@@ -23,6 +23,7 @@ import { environment } from '../environments/environment';
 import { DatePipe } from '@angular/common';
 import { DateFromStringPipe } from './date-from-string.pipe';
 import { WeekCenterDetailsComponent } from './week-center-details/week-center-details.component';
+import { RequestLimiterInterceptor } from './request-limiter.interceptor';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { WeekCenterDetailsComponent } from './week-center-details/week-center-de
   ],
   providers: [
     DatePipe,
+    { provide: HTTP_INTERCEPTORS, useClass: RequestLimiterInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpProgressInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

@@ -8,11 +8,15 @@
       </mat-list-item>
       <mat-divider></mat-divider>
     </mat-list>
+    <mat-divider></mat-divider>
+    <div *ngIf="(activeRequests | async)">
+      {{activeRequests | async}} requests in last 5 mins.
+    </div>
   </mat-drawer>
 
   <div class="max-w-3xl mx-auto my-0">
     <mat-toolbar color="primary">
-      <button mat-icon-button aria-label="Cowin Helper Menu Options" class="focus:outline-none" (click)="drawer.toggle()">
+      <button mat-icon-button aria-label="Cowin Helper Menu Options" class="focus:outline-none" (click)="drawer.toggle();fetchActiveRequests()">
         <mat-icon aria-hidden="false">menu</mat-icon>
       </button>
       <span class="w-full">Cowin Helper</span>

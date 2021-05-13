@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { IdbService } from './idb.service';
 import { MenuOption } from './models/menu-option';
 import { ProgressBarConfiguration } from './models/progress-bar-configuration';
+import { RequestQueue } from './models/request-queue';
 import { ProgressBarService } from './progress-bar.service';
 
 @Component({
@@ -18,9 +22,11 @@ export class AppComponent implements OnInit {
     { icon: 'info', label: 'About', link: '/about'},    
   ];
   progressBarConfiguration: ProgressBarConfiguration;
+  activeRequests: Observable<number>;
 
   constructor(
-    private readonly progressBarService: ProgressBarService
+    private readonly progressBarService: ProgressBarService,
+    private readonly storageService: IdbService
   ) {
     this.progressBarConfiguration = {
       show: false,
@@ -33,6 +39,11 @@ export class AppComponent implements OnInit {
     this.progressBarService.showProgressBar$
     .subscribe((configuration: ProgressBarConfiguration)=>{
       this.progressBarConfiguration  = { ...configuration } ;            
-    });
+    });    
+  }
+
+  fetchActiveRequests() {
+    this.activeRequests = this.storageService.getItem('activeRequests')
+      .pipe(map((activeRequests: RequestQueue[])=> activeRequests?.length));
   }
 }

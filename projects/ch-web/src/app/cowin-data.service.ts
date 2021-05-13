@@ -19,7 +19,7 @@ export class CowinDataService {
 
   getStates(): Observable<State[]> {
     const url = `${environment.cowin_endpoints.metaData}/states`;    
-    return this.httpClient.get<State[]>(url).pipe(
+    return this.httpClient.get<State[]>(url, { reportProgress: true }).pipe(
       map((result: any) => result.states));
   }
 
