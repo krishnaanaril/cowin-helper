@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 import { CowinDataService } from '../cowin-data.service';
@@ -14,6 +15,7 @@ import { State } from '../models/state';
 export class AddWatcherComponent implements OnInit {
 
   constructor(
+    public dialogRef: MatDialogRef<AddWatcherComponent>,
     private formBuilder: FormBuilder,
     private dataService: CowinDataService
   ) { 
@@ -97,6 +99,7 @@ export class AddWatcherComponent implements OnInit {
     } else {
       console.log('not valid');
     }
+    this.dialogRef.close();
   }
 
   ngOnDestroy() {
