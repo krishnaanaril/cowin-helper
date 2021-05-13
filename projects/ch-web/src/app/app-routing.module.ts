@@ -19,7 +19,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'pin', pathMatch: 'full'}
     ]
   },
-  { path: '', redirectTo: 'search', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];
 

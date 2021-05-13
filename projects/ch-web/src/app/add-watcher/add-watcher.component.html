@@ -1,1 +1,65 @@
-<p>add-watcher works!</p>
+<form [formGroup]="watchForm" (ngSubmit)="onSubmit()">
+<h1 mat-dialog-title>
+    Add New Watch
+</h1>
+<div mat-dialog-content>
+    <mat-tab-group (selectedTabChange)="tabChange($event)">
+        <mat-tab label="By Pin" class="h-44"> 
+            
+                <div formGroupName="watchByPinForm" class="h-44 flex flex-col justify-center align-middle">
+                    <mat-form-field class="w-full">
+                        <mat-label>Pin Code</mat-label>
+                        <input id="search-pin" matInput formControlName="pin" placeholder="666555">
+                        <mat-error *ngIf="watchForm.get('watchByPinForm.pin').hasError('required')">
+                            Pin Code is required
+                        </mat-error>
+                        <mat-error *ngIf="watchForm.get('watchByPinForm.pin').hasError('pattern')">
+                            Pin Code is not valid
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            
+        </mat-tab>
+        <mat-tab label="By District" class="h-44">            
+                <div formGroupName="watchByDistrictForm" class="h-44">
+                    <div>
+                        <mat-form-field class="w-full">
+                            <mat-label>State</mat-label>
+                            <input id="search-state" type="text" class="focus:ring-transparent" placeholder="Pick state" aria-label="State" matInput
+                                formControlName="selectedState" [matAutocomplete]="auto">
+                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayStateFn"
+                                (optionSelected)="onStateSelectionChange($event)">
+                                <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                                    {{state.state_name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <mat-error *ngIf="watchForm.get('watchByDistrictForm.selectedState').hasError('required')">
+                                State is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="">
+                        <mat-form-field class="w-full">
+                            <mat-label>District</mat-label>
+                            <input id="search-district" type="text" class="focus:ring-transparent" placeholder="Pick district" aria-label="District" matInput
+                                formControlName="selectedDistrict" [matAutocomplete]="autoDistrict">
+                            <mat-autocomplete autoActiveFirstOption #autoDistrict="matAutocomplete"
+                                [displayWith]="displayDistrictFn">
+                                <mat-option *ngFor="let district of filteredDistricts | async" [value]="district">
+                                    {{district.district_name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <mat-error *ngIf="watchForm.get('watchByDistrictForm.selectedDistrict').hasError('required')">
+                                District is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>            
+        </mat-tab>
+    </mat-tab-group>
+</div>
+<div mat-dialog-actions class="flex flex-row justify-end">
+    <button mat-stroked-button mat-dialog-close class="focus:outline-none">Cancel</button>
+    <button mat-raised-button color="primary" type="submit" class="focus:outline-none">Add</button>
+</div>
+</form>

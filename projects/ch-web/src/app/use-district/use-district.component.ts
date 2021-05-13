@@ -70,12 +70,12 @@ export class UseDistrictComponent implements OnInit, OnDestroy {
 
   private _filterStates(value: string): State[] {
     const filterValue = value.toLowerCase();
-    return this.states.filter(option => option.state_name.toLowerCase().indexOf(filterValue) === 0);
+    return this.states?.filter(option => option.state_name.toLowerCase().indexOf(filterValue) === 0);
   }
 
   private _filterDistricts(value: string): District[] {
     const filterValue = value.toLowerCase();
-    return this.districts.filter(option => option.district_name.toLowerCase().indexOf(filterValue) === 0);
+    return this.districts?.filter(option => option.district_name.toLowerCase().indexOf(filterValue) === 0);
   }
 
   displayStateFn(state: State): string {
