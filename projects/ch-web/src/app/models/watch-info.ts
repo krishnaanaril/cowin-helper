@@ -9,8 +9,9 @@ export interface WatchInfo {
     pin: string;
     state: string;
     district: string;
-    deltaCenters: number;
-    deltaJabs: number;
+    districtId?: number;
+    deltaCenters?: number;
+    deltaJabs?: number;
     lastUpdated?: Date;
     modifiedAt?: Date;
     createdAt: Date;

@@ -1,4 +1,10 @@
-<p>dash-board works!</p>
+<div>
+    <div *ngFor="let watch of (activeWatches$ | async)">
+        <mat-card>
+            {{watch.id}}
+        </mat-card>
+    </div>
+</div>
 <div class="fixed bottom-7 right-7">
     <button mat-fab aria-label="Add new repository" class="focus:outline-none" (click)="addWatch()">
         <mat-icon>add</mat-icon>

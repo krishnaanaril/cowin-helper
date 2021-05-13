@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { EMPTY, forkJoin, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { IdbService } from './idb.service';
+import { CenterForWeek } from './models/center-for-week';
 import { WatchInfo } from './models/watch-info';
 
 @Injectable({
@@ -17,15 +18,28 @@ export class WatchService {
     return this.storageService.getItem('activeWatches');
   }
 
-  addWatch(newWatch: WatchInfo) {
+  getWatchDetails(watchId: string) {
+    return this.storageService.getItem(watchId);
+  }
+
+  /**
+   * Add watch to the indexed db
+   * @param newWatch 
+   * @param centers
+   * @returns 
+   */
+  addWatch(newWatch: WatchInfo, centers: CenterForWeek[]) {
     return this.getWatches()
       .pipe(
         switchMap((activeWatches: WatchInfo[]) => {
-          if (activeWatches.length < 5) {
+          if(activeWatches == null) {
+            activeWatches = [];
+          }
+          if (activeWatches?.length < 5) {
             activeWatches.push(newWatch);
             return forkJoin({
               watchList: this.storageService.updateItem('activeWatches', activeWatches),
-              newWatch: this.storageService.setItem(newWatch.id, newWatch)
+              newWatch: this.storageService.setItem(newWatch.id, centers)
             });
           } else {
             return EMPTY;
@@ -33,15 +47,15 @@ export class WatchService {
         }));
   }
 
-  editWatch(updatedWatch: WatchInfo) {
+  editWatch(updatedWatch: WatchInfo, centers: CenterForWeek[]) {
     return this.getWatches()
       .pipe(
         switchMap((activeWatches: WatchInfo[]) => {
-          const matchingIndex = activeWatches.findIndex((watch) => watch.id === updatedWatch.id);
+          const matchingIndex = activeWatches?.findIndex((watch) => watch.id === updatedWatch.id);
           activeWatches[matchingIndex] = updatedWatch;
           return forkJoin({
             watchList: this.storageService.updateItem('activeWatches', activeWatches),
-            updatedWatch: this.storageService.updateItem(updatedWatch.id, updatedWatch)
+            updatedWatch: this.storageService.updateItem(updatedWatch.id, centers)
           });
         }));
   }
