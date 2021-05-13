@@ -11,6 +11,9 @@
                         {{state.state_name}}
                     </mat-option>
                 </mat-autocomplete>
+                <mat-error *ngIf="searchForm.get('selectedState').hasError('required')">
+                    State is required
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="py-2">
@@ -24,6 +27,9 @@
                         {{district.district_name}}
                     </mat-option>
                 </mat-autocomplete>
+                <mat-error *ngIf="searchForm.get('selectedDistrict').hasError('required')">
+                    District is required
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="py-2">

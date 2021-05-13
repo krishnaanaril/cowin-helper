@@ -41,7 +41,7 @@ export class RequestLimiterInterceptor implements HttpInterceptor {
         while(activeRequests.length > 0 && this.checkTimeDifference(activeRequests[0].requestedTime, currentDate)) {
           activeRequests.shift();
         };      
-        if(activeRequests.length < 5) {
+        if(activeRequests.length < 80) {
           const currentRequest: RequestQueue = {
             requestedTime: currentDate,
             url: request.url

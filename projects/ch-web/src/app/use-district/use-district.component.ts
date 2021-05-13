@@ -97,25 +97,27 @@ export class UseDistrictComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.showNoCenterMessage = false;
-    this.centersForDay = [];
-    this.centersForWeek = [];
-    const searchData: SearchByDistrictData = this.searchForm.value;
-    const dateString: string = `${searchData.date.getDate()}-${searchData.date.getMonth() + 1}-${searchData.date.getFullYear()}`;
-    if (searchData.isForWeek) {
-      this.dataService.searchAvailabilityByDistrictForWeek(searchData.selectedDistrict.district_id, dateString)
-        .pipe(takeUntil(this.componentDestroyed$))
-        .subscribe((result: CenterForWeek[]) => {
-          this.centersForWeek = result;
-          this.showNoCenterMessage = this.centersForWeek?.length > 0 ? false : true;
-        });
-    } else {
-      this.dataService.searchAvailabilityByDistrict(searchData.selectedDistrict.district_id, dateString)
-        .pipe(takeUntil(this.componentDestroyed$))
-        .subscribe((result: CenterForDay[]) => {
-          this.centersForDay = result;
-          this.showNoCenterMessage = this.centersForDay?.length > 0 ? false : true;
-        });
+    if (this.searchForm.valid) {
+      this.showNoCenterMessage = false;
+      this.centersForDay = [];
+      this.centersForWeek = [];
+      const searchData: SearchByDistrictData = this.searchForm.value;
+      const dateString: string = `${searchData.date.getDate()}-${searchData.date.getMonth() + 1}-${searchData.date.getFullYear()}`;
+      if (searchData.isForWeek) {
+        this.dataService.searchAvailabilityByDistrictForWeek(searchData.selectedDistrict.district_id, dateString)
+          .pipe(takeUntil(this.componentDestroyed$))
+          .subscribe((result: CenterForWeek[]) => {
+            this.centersForWeek = result;
+            this.showNoCenterMessage = this.centersForWeek?.length > 0 ? false : true;
+          });
+      } else {
+        this.dataService.searchAvailabilityByDistrict(searchData.selectedDistrict.district_id, dateString)
+          .pipe(takeUntil(this.componentDestroyed$))
+          .subscribe((result: CenterForDay[]) => {
+            this.centersForDay = result;
+            this.showNoCenterMessage = this.centersForDay?.length > 0 ? false : true;
+          });
+      }
     }
   }
 
