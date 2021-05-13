@@ -3,7 +3,7 @@
         <div mat-subheader>Active Watches</div>
         <mat-list-item class="my-2" *ngFor="let watch of (activeWatches$ | async)">
             <mat-icon color="accent" mat-list-icon>track_changes</mat-icon>
-            <div mat-line>
+            <div mat-line [routerLink]="['/watch-details', watch.id]">
                 <div>
                     <span *ngIf="watch.pin; else displayDistrict" class="font-semibold text-gray-700">Pin:
                         {{watch.pin}}</span>
@@ -15,10 +15,22 @@
             <div mat-line class="text-gray-500 text-base">Last updated: {{watch.lastUpdated | date:'d/M/y, h:mm a'}} </div>
             <div mat-line>
                 <div>
-                    <span class="align-text-bottom text-green-700 font-semibold">4 Centers</span>
-                    <mat-icon mat-list-icon class="text-green-700 font-semibold">arrow_upward</mat-icon>
-                    <span class="align-text-bottom text-red-700 font-semibold">45 Jabs</span>
-                    <mat-icon mat-list-icon class="text-red-700 font-semibold">arrow_downward</mat-icon>
+                    <span *ngIf="watch?.deltaCenters > 0; else displayReducedCenters" class="align-text-bottom text-green-700 font-semibold">{{localMath.abs(watch.deltaCenters)}} Centers</span>
+                    <ng-template #displayReducedCenters>
+                        <span class="align-text-bottom text-red-700 font-semibold">{{localMath.abs(watch?.deltaCenters ? watch.deltaCenters : 0)}} Centers</span>
+                    </ng-template>
+                    <mat-icon *ngIf="watch?.deltaCenters > 0; else displayReducedCentersIcon" mat-list-icon class="text-green-700 font-semibold">arrow_upward</mat-icon>
+                    <ng-template #displayReducedCentersIcon>
+                        <mat-icon mat-list-icon class="text-red-700 font-semibold">arrow_downward</mat-icon>
+                    </ng-template>
+                    <span *ngIf="watch?.deltaJabs; else displayReducedJabs" class="align-text-bottom text-green-700 font-semibold">{{localMath.abs(watch.deltaJabs)}} Jabs</span>
+                    <ng-template #displayReducedJabs>
+                        <span class="align-text-bottom text-red-700 font-semibold">{{localMath.abs(watch?.deltaJabs ? watch.deltaJabs : 0)}} Jabs</span>
+                    </ng-template>
+                    <mat-icon *ngIf="watch?.deltaJabs; else displayReducedJabsIcon" mat-list-icon class="text-green-700 font-semibold">arrow_upward</mat-icon>
+                    <ng-template #displayReducedJabsIcon>
+                        <mat-icon mat-list-icon class="text-red-700 font-semibold">arrow_downward</mat-icon>
+                    </ng-template>
                 </div>
             </div>
             <div>

@@ -7,9 +7,11 @@ import { SearchAvailabilityComponent } from './search-availability/search-availa
 import { SettingsComponent } from './settings/settings.component';
 import { UseDistrictComponent } from './use-district/use-district.component';
 import { UsePinComponent } from './use-pin/use-pin.component';
+import { WatchDetailsComponent } from './watch-details/watch-details.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashBoardComponent },
+  { path: 'watch-details/:id', component: WatchDetailsComponent},
   { path: 'about', component: AboutComponent },
   { path: 'settings', component: SettingsComponent },
   {

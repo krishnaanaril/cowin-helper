@@ -25,6 +25,7 @@ export class DashBoardComponent implements OnInit {
   ) { }
 
   activeWatches$: Observable<WatchInfo[]>;
+  public localMath = Math;
 
   ngOnInit(): void {
     this.activeWatches$ = this.watchService.getWatches();

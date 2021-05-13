@@ -115,6 +115,8 @@ export class AddWatcherComponent implements OnInit {
         this.dataService.searchAvailabilityByPinForWeek(newWatch.pin, dateString)
           .subscribe((centers: CenterForWeek[])=>{
             newWatch.lastUpdated = new Date();
+            newWatch.deltaCenters = centers.length;
+            newWatch.deltaJabs = centers.reduce((prev01, center) => prev01 + center.sessions.reduce((prev02, session) => prev02 + session.available_capacity, 0), 0)
             this.watchService.addWatch(newWatch, centers).subscribe(()=>{
               this.dialogRef.close();
             }, err => console.error(err));
