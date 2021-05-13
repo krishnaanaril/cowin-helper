@@ -26,5 +26,30 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-performance",
+      "urls": [
+        "https://cdn-api.co-vin.in/api/v2/admin/location/**"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 100,
+        "maxAge": "1d"
+      }
+    },
+    {
+      "name": "api-freshness",
+      "urls": [
+        "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/**"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "1d"
+      }
+    }
   ]
+
 }
