@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CowinDataService } from 'projects/ch-web/src/app/cowin-data.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { CenterForDay } from '../models/center-for-day';
 import { CenterForWeek } from '../models/center-for-week';
 
@@ -26,6 +28,7 @@ export class UsePinComponent implements OnInit {
     const currentDay = currentDate.getDate();
     this.minDate = currentDate;
     this.maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDay + 7);
+    this.componentDestroyed$ = new Subject<false>();
   }
 
   searchForm: FormGroup = this.formBuilder.group({
@@ -38,6 +41,7 @@ export class UsePinComponent implements OnInit {
   centersForDay: CenterForDay[];
   centersForWeek: CenterForWeek[];
   showNoCenterMessage: boolean = false;
+  componentDestroyed$: Subject<boolean>;
 
   ngOnInit(): void {
     this.searchForm.get('date').setValue(this.minDate);
@@ -51,17 +55,24 @@ export class UsePinComponent implements OnInit {
     const dateString: string = `${searchData.date.getDate()}-${searchData.date.getMonth() + 1}-${searchData.date.getFullYear()}`;
     if (searchData.isForWeek) {
       this.dataService.searchAvailabilityByPinForWeek(searchData.pin, dateString)
-      .subscribe((result: CenterForWeek[]) => {
-        this.centersForWeek = result;
-        this.showNoCenterMessage = this.centersForWeek?.length > 0 ? false : true;
-      });
+        .pipe(takeUntil(this.componentDestroyed$))
+        .subscribe((result: CenterForWeek[]) => {
+          this.centersForWeek = result;
+          this.showNoCenterMessage = this.centersForWeek?.length > 0 ? false : true;
+        });
     } else {
       this.dataService.searchAvailabilityByPin(searchData.pin, dateString)
-      .subscribe((result: CenterForDay[]) => {
-        this.centersForDay = result;          
-        this.showNoCenterMessage = this.centersForDay?.length > 0 ? false : true;    
-      });
+        .pipe(takeUntil(this.componentDestroyed$))
+        .subscribe((result: CenterForDay[]) => {
+          this.centersForDay = result;
+          this.showNoCenterMessage = this.centersForDay?.length > 0 ? false : true;
+        });
     }
+  }
+
+  ngOnDestroy() {
+    this.componentDestroyed$.next(true);
+    this.componentDestroyed$.unsubscribe();
   }
 
 }

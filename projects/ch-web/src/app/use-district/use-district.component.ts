@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, of } from 'rxjs';
-import { debounceTime, map, startWith, tap } from 'rxjs/operators';
+import { Observable, of, Subject } from 'rxjs';
+import { debounceTime, map, startWith, takeUntil, tap } from 'rxjs/operators';
 import { CowinDataService } from '../cowin-data.service';
 import { CenterForDay } from '../models/center-for-day';
 import { CenterForWeek } from '../models/center-for-week';
@@ -20,7 +20,7 @@ export interface SearchByDistrictData {
   templateUrl: './use-district.component.html',
   styleUrls: ['./use-district.component.scss']
 })
-export class UseDistrictComponent implements OnInit {
+export class UseDistrictComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,6 +30,7 @@ export class UseDistrictComponent implements OnInit {
     const currentDay = currentDate.getDate();
     this.minDate = currentDate;
     this.maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDay + 7);
+    this.componentDestroyed$ = new Subject<false>();
   }
 
   searchForm: FormGroup = this.formBuilder.group({
@@ -47,20 +48,21 @@ export class UseDistrictComponent implements OnInit {
   centersForDay: CenterForDay[];
   centersForWeek: CenterForWeek[];
   showNoCenterMessage: boolean = false;
+  componentDestroyed$: Subject<boolean>;
 
   ngOnInit(): void {
     this.searchForm.get('date').setValue(this.minDate);
-    this.dataService.getStates().subscribe((states: State[]) => {
-      this.states = states;
-      this.searchForm.get('selectedState').setValue('');
-    });
+    this.dataService.getStates()
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((states: State[]) => {
+        this.states = states;
+        this.searchForm.get('selectedState').setValue('');
+      });
     this.filteredStates = this.searchForm.get('selectedState').valueChanges.pipe(
-      // debounceTime(500),
       map(value => typeof value === 'string' ? value : value.state_name),
       map(value => this._filterStates(value))
     );
     this.filteredDistricts = this.searchForm.get('selectedDistrict').valueChanges.pipe(
-      // debounceTime(500),
       map(value => typeof value === 'string' ? value : value.district_name),
       map(value => this._filterDistricts(value))
     );
@@ -86,10 +88,12 @@ export class UseDistrictComponent implements OnInit {
 
   onStateSelectionChange(event) {
     const selectedState: State = event.option.value;
-    this.dataService.getDistricts(selectedState.state_id).subscribe((districts: District[]) => {
-      this.districts = districts;
-      this.searchForm.get('selectedDistrict').setValue('');
-    });
+    this.dataService.getDistricts(selectedState.state_id)
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((districts: District[]) => {
+        this.districts = districts;
+        this.searchForm.get('selectedDistrict').setValue('');
+      });
   }
 
   onSubmit() {
@@ -100,17 +104,24 @@ export class UseDistrictComponent implements OnInit {
     const dateString: string = `${searchData.date.getDate()}-${searchData.date.getMonth() + 1}-${searchData.date.getFullYear()}`;
     if (searchData.isForWeek) {
       this.dataService.searchAvailabilityByDistrictForWeek(searchData.selectedDistrict.district_id, dateString)
+        .pipe(takeUntil(this.componentDestroyed$))
         .subscribe((result: CenterForWeek[]) => {
           this.centersForWeek = result;
           this.showNoCenterMessage = this.centersForWeek?.length > 0 ? false : true;
         });
     } else {
       this.dataService.searchAvailabilityByDistrict(searchData.selectedDistrict.district_id, dateString)
+        .pipe(takeUntil(this.componentDestroyed$))
         .subscribe((result: CenterForDay[]) => {
-          this.centersForDay = result;    
-          this.showNoCenterMessage = this.centersForDay?.length > 0 ? false : true;      
+          this.centersForDay = result;
+          this.showNoCenterMessage = this.centersForDay?.length > 0 ? false : true;
         });
     }
+  }
+
+  ngOnDestroy() {
+    this.componentDestroyed$.next(true);
+    this.componentDestroyed$.unsubscribe();
   }
 
 }
