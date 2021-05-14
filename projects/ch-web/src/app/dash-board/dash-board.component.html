@@ -38,10 +38,10 @@
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <!-- <button class="focus:outline-none" mat-menu-item>
-                        <mat-icon>edit</mat-icon>
-                        <span>Edit</span>
-                    </button> -->
+                    <button class="focus:outline-none" mat-menu-item (click)="refreshWatch(watch.id)">
+                        <mat-icon>refresh</mat-icon>
+                        <span>Refresh</span>
+                    </button>
                     <button class="focus:outline-none" mat-menu-item (click)="deleteWatch(watch.id)">
                         <mat-icon>delete</mat-icon>
                         <span>Delete</span>

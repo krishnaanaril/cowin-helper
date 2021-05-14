@@ -1,10 +1,21 @@
 <div>
-    <div *ngFor="let center of (watchDetails | async)">        
+    <div *ngFor="let center of (watchDetails | async)">
         <ch-week-center-info [center]="center"></ch-week-center-info>
     </div>
 </div>
+<mat-card *ngIf="showNoCenters">
+    <div class="flex flex-row justify-start bg-yellow-50 p-4 rounded-2xl">
+        <div>
+            <mat-icon color="accent">error</mat-icon>
+        </div>
+        <div class="text-xl ml-4">
+            No centers available
+        </div>
+    </div>
+</mat-card>
+
 <div class="fixed bottom-7 right-7">
-    <button mat-fab aria-label="Refresh Center details" class="focus:outline-none">
-        <mat-icon>refresh</mat-icon>
+    <button mat-fab aria-label="Go back to dashboard" class="focus:outline-none" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
     </button>
 </div>

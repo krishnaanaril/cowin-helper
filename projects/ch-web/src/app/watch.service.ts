@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { EMPTY, forkJoin, Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { CowinDataService } from './cowin-data.service';
 import { IdbService } from './idb.service';
 import { CenterForWeek } from './models/center-for-week';
-import { WatchInfo } from './models/watch-info';
+import { WatchInfo, WatchType } from './models/watch-info';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,47 @@ import { WatchInfo } from './models/watch-info';
 export class WatchService {
 
   constructor(
+    private dataService: CowinDataService,
     private storageService: IdbService
   ) { }
 
   getWatches(): Observable<WatchInfo[]> {
     return this.storageService.getItem('activeWatches');
+  }
+
+  getWatchById(watchId: string): Observable<WatchInfo> {
+    return this.getWatches().pipe(
+      map((watches: WatchInfo[]) => watches.find(watch => watch.id === watchId))
+    );
+  }
+
+  refreshWatch(watchId: string) {
+    const currentDate = new Date();
+    const dateString: string = `${currentDate.getDate()}-${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`;
+    return this.getWatchById(watchId)
+      .pipe(
+        switchMap((watchInfo: WatchInfo) => {
+          if (watchInfo.type === WatchType.Pin) {
+            return this.dataService.searchAvailabilityByPinForWeek(watchInfo.pin, dateString)
+              .pipe(map((centers: CenterForWeek[]) =>
+                ({ centers: centers, watchInfo: watchInfo })
+              ));
+          } else {
+            return this.dataService.searchAvailabilityByDistrictForWeek(watchInfo.districtId, dateString)
+              .pipe(map((centers: CenterForWeek[]) =>
+                ({ centers: centers, watchInfo: watchInfo })
+              ));
+          }
+        }),
+        switchMap((value: { centers: CenterForWeek[], watchInfo: WatchInfo }) => {
+          const totalCenter = value.centers.length;
+          const totalJabs = value.centers.reduce((prev01, center) => prev01 + center.sessions.reduce((prev02, session) => prev02 + session.available_capacity, 0), 0);
+          value.watchInfo.lastUpdated = new Date();
+          value.watchInfo.deltaCenters = totalCenter - value.watchInfo.deltaCenters;
+          value.watchInfo.deltaJabs = totalJabs - value.watchInfo.deltaJabs;
+          return this.editWatch(value.watchInfo, value.centers);
+        })
+      );
   }
 
   getWatchDetails(watchId: string) {
@@ -32,7 +69,7 @@ export class WatchService {
     return this.getWatches()
       .pipe(
         switchMap((activeWatches: WatchInfo[]) => {
-          if(activeWatches == null) {
+          if (activeWatches == null) {
             activeWatches = [];
           }
           if (activeWatches?.length < 5) {

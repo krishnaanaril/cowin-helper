@@ -36,14 +36,21 @@ export class DashBoardComponent implements OnInit {
       panelClass: 'w-80',
       disableClose: true
     }).afterClosed()
-      .subscribe(()=>{
+      .subscribe(() => {
+        this.activeWatches$ = this.watchService.getWatches();
+      });
+  }
+
+  refreshWatch(watchId: string) {
+    this.watchService.refreshWatch(watchId)
+      .subscribe(() => {
         this.activeWatches$ = this.watchService.getWatches();
       });
   }
 
   deleteWatch(watchId: string) {
     this.watchService.deleteWatch(watchId)
-      .subscribe(()=>{
+      .subscribe(() => {
         this.activeWatches$ = this.watchService.getWatches();
         this.snackBar.open("Watch deleted successfully", '', {
           duration: 2000
