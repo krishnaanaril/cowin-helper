@@ -10,6 +10,8 @@ export interface WatchInfo {
     state: string;
     district: string;
     districtId?: number;
+    totalCenters?: number;
+    totalJabs?: number;
     deltaCenters?: number;
     deltaJabs?: number;
     lastUpdated?: Date;

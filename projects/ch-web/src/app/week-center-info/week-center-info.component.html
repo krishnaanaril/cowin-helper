@@ -12,8 +12,7 @@
                 <span>{{'1970-01-01T' + center.from + 'Z' | date:'shortTime':'GMT'}} - {{'1970-01-01T' + center.to + 'Z' | date:'shortTime':'GMT'}}</span>
             </h3>
         </div>
-    </div>
-    <mat-divider></mat-divider>
+    </div>    
     <div class="flex flex-row justify-start overflow-x-scroll py-3">
         <div *ngFor="let session of center.sessions" class="px-2 bg-green-50 mr-4 rounded-lg">
             <div class="mb-2">

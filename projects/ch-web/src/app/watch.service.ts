@@ -44,15 +44,22 @@ export class WatchService {
               ));
           }
         }),
-        switchMap((value: { centers: CenterForWeek[], watchInfo: WatchInfo }) => {
-          const totalCenter = value.centers.length;
-          const totalJabs = value.centers.reduce((prev01, center) => prev01 + center.sessions.reduce((prev02, session) => prev02 + session.available_capacity, 0), 0);
-          value.watchInfo.lastUpdated = new Date();
-          value.watchInfo.deltaCenters = totalCenter - value.watchInfo.deltaCenters;
-          value.watchInfo.deltaJabs = totalJabs - value.watchInfo.deltaJabs;
+        switchMap((value: { centers: CenterForWeek[], watchInfo: WatchInfo }) => {          
+          value.watchInfo = this.updateDeltaValues(value.centers, value.watchInfo);
           return this.editWatch(value.watchInfo, value.centers);
         })
       );
+  }
+
+  updateDeltaValues(centers: CenterForWeek[], watchInfo: WatchInfo): WatchInfo {
+    const previousTotalCenters = watchInfo?.totalCenters ?? 0;
+    const previousTotalJabs = watchInfo?.totalJabs ?? 0;
+    watchInfo.totalCenters = centers.length;
+    watchInfo.totalJabs = centers.reduce((prev01, center) => prev01 + center.sessions.reduce((prev02, session) => prev02 + session.available_capacity, 0), 0);
+    watchInfo.lastUpdated = new Date();
+    watchInfo.deltaCenters = watchInfo.totalCenters - previousTotalCenters;
+    watchInfo.deltaJabs = watchInfo.totalJabs - previousTotalJabs;
+    return watchInfo;
   }
 
   getWatchDetails(watchId: string) {
