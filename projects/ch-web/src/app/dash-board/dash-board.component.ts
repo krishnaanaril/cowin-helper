@@ -26,27 +26,67 @@ export class DashBoardComponent implements OnInit {
 
   activeWatches$: Observable<WatchInfo[]>;
   public localMath = Math;
+  message: string = '';
 
   ngOnInit(): void {
     this.activeWatches$ = this.watchService.getWatches();
   }
 
+  syncContent() {
+    this.message += '\n in sync content';
+    console.log('in sync content');
+  }
+
   notifyTest() {
-    Notification.requestPermission().then((permission) => {
-      console.log(permission);
-      if (Notification.permission === "granted") {
-        navigator.serviceWorker.getRegistration().then((reg) => {
-          console.log(reg);
-          reg.showNotification("Cowin Helper", {
-            body: 'This is a sample message',
-            icon: 'assets/icons/icon-96x96.png',
-            data: {
-              url: 'http://localhost:8080/dashboard'
-            }
-          });
-        })
+    navigator.serviceWorker.addEventListener('periodicsync', (event: any) => {
+      if (event.tag === 'content-sync') {
+        // See the "Think before you sync" section for
+        // checks you could perform before syncing.
+        event.waitUntil(this.syncContent());
       }
+      // Other logic for different tags as needed.
     });
+    navigator.permissions.query({
+      name: <any>'periodic-background-sync',
+    }).then((status)=>{
+      if (status.state === 'granted') {
+        // Periodic background sync can be used.
+        console.log('periodic-background-sync permission granted');
+        this.message += '\n periodic-background-sync permission granted';
+        Notification.requestPermission().then((permission) => {
+          console.log(permission);
+          if (Notification.permission === "granted") {
+            navigator.serviceWorker.getRegistration().then((reg: any) => {
+              console.log(reg);     
+              if ('periodicSync' in reg) {
+                try {
+                  reg.periodicSync.register('content-sync', {
+                    // An interval of 1 mins.
+                    minInterval: 1 * 60 * 1000,
+                  }); 
+                } catch (error) {
+                  this.message += '\n content-sync register error';
+                  console.log('content-sync register error');
+                  console.error(error)
+                }  
+                console.log('content-sync registerd');
+              }            
+              reg.showNotification("Cowin Helper", {
+                body: 'This is a sample message',
+                icon: 'assets/icons/icon-96x96.png',
+                data: {
+                  url: 'http://localhost:8080/dashboard'
+                }
+              });
+            })
+          }
+        });
+      } else {
+        // Periodic background sync cannot be used.
+        this.message += '\n not granted periodic sync';
+        console.error('not granted periodic sync')
+      }
+    });    
   }
 
   addWatch() {

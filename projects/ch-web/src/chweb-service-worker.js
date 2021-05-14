@@ -10,5 +10,6 @@ importScripts('./ngsw-worker.js');
         if (clients.openWindow && event.notification.data.url) {
             event.waitUntil(clients.openWindow(event.notification.data.url));
         }
-    });}
+    });
+}
 ());
