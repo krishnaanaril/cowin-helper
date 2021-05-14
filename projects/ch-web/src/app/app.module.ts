@@ -24,7 +24,7 @@ import { DatePipe } from '@angular/common';
 import { DateFromStringPipe } from './date-from-string.pipe';
 import { WeekCenterDetailsComponent } from './week-center-details/week-center-details.component';
 import { RequestLimiterInterceptor } from './request-limiter.interceptor';
-import { RequestLimitAlertComponent } from './request-limit-alert/request-limit-alert.component';
+import { CustomAlertComponent } from './custom-alert/custom-alert.component';
 import { WatchDetailsComponent } from './watch-details/watch-details.component';
 
 @NgModule({
@@ -42,7 +42,7 @@ import { WatchDetailsComponent } from './watch-details/watch-details.component';
     WeekCenterInfoComponent,
     DateFromStringPipe,
     WeekCenterDetailsComponent,
-    RequestLimitAlertComponent,
+    CustomAlertComponent,
     WatchDetailsComponent
   ],
   imports: [

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RequestLimitAlertComponent } from './request-limit-alert.component';
+import { CustomAlertComponent } from './custom-alert.component';
 
-describe('RequestLimitAlertComponent', () => {
-  let component: RequestLimitAlertComponent;
-  let fixture: ComponentFixture<RequestLimitAlertComponent>;
+describe('CustomAlertComponent', () => {
+  let component: CustomAlertComponent;
+  let fixture: ComponentFixture<CustomAlertComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RequestLimitAlertComponent ]
+      declarations: [ CustomAlertComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RequestLimitAlertComponent);
+    fixture = TestBed.createComponent(CustomAlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

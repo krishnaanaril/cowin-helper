@@ -10,7 +10,7 @@ import { IdbService } from './idb.service';
 import { RequestQueue } from './models/request-queue';
 import { concatMap, flatMap, map, mergeMap, switchMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { RequestLimitAlertComponent } from './request-limit-alert/request-limit-alert.component';
+import { CustomAlertComponent } from './custom-alert/custom-alert.component';
 
 @Injectable()
 export class RequestLimiterInterceptor implements HttpInterceptor {
@@ -49,7 +49,7 @@ export class RequestLimiterInterceptor implements HttpInterceptor {
           activeRequests.push(currentRequest);
           return this.proceedRequest(request, activeRequests);
         }
-        return this.dialog.open(RequestLimitAlertComponent).afterClosed().pipe(concatMap(() => EMPTY));        
+        return this.dialog.open(CustomAlertComponent).afterClosed().pipe(concatMap(() => EMPTY));        
       }),
       mergeMap((result) => next.handle(result))      
     );
