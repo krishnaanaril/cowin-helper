@@ -49,7 +49,12 @@ export class RequestLimiterInterceptor implements HttpInterceptor {
           activeRequests.push(currentRequest);
           return this.proceedRequest(request, activeRequests);
         }
-        return this.dialog.open(CustomAlertComponent).afterClosed().pipe(concatMap(() => EMPTY));        
+        return this.dialog.open(CustomAlertComponent, {
+          data: {
+            title: 'Be Nice. 😃',
+            body: 'You can sent maximum of 80 requests in a 5 minute window. Try after sometime.'
+          }
+        }).afterClosed().pipe(concatMap(() => EMPTY));        
       }),
       mergeMap((result) => next.handle(result))      
     );

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AlertData } from '../models/alert-data';
 
 @Component({
   selector: 'ch-custom-alert',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomAlertComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: AlertData
+  ) { }
 
   ngOnInit(): void {
   }
