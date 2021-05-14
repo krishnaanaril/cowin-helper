@@ -26,7 +26,8 @@
             "assets": [
               "projects/ch-web/src/favicon.ico",
               "projects/ch-web/src/assets",
-              "projects/ch-web/src/manifest.webmanifest"
+              "projects/ch-web/src/manifest.webmanifest",
+              "projects/ch-web/src/chweb-service-worker.js"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
@@ -93,7 +94,8 @@
             "assets": [
               "projects/ch-web/src/favicon.ico",
               "projects/ch-web/src/assets",
-              "projects/ch-web/src/manifest.webmanifest"
+              "projects/ch-web/src/manifest.webmanifest",
+              "projects/ch-web/src/chweb-service-worker.js"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
