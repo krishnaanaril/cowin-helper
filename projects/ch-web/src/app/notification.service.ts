@@ -46,10 +46,5 @@ export class NotificationService {
         document.location.reload();
       });
 
-    navigator.serviceWorker.addEventListener('message', (event) => {
-      console.log('message received from sw')
-      console.log(event);
-    });
-
   }
 }
