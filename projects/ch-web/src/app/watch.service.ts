@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { EMPTY, forkJoin, Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { concatMap, map, switchMap } from 'rxjs/operators';
 import { CowinDataService } from './cowin-data.service';
+import { CustomAlertComponent } from './custom-alert/custom-alert.component';
 import { IdbService } from './idb.service';
 import { CenterForWeek } from './models/center-for-week';
 import { WatchInfo, WatchType } from './models/watch-info';
@@ -12,6 +14,7 @@ import { WatchInfo, WatchType } from './models/watch-info';
 export class WatchService {
 
   constructor(
+    public dialog: MatDialog,
     private dataService: CowinDataService,
     private storageService: IdbService
   ) { }
@@ -86,7 +89,12 @@ export class WatchService {
               newWatch: this.storageService.setItem(newWatch.id, centers)
             });
           } else {
-            return EMPTY;
+            return this.dialog.open(CustomAlertComponent, {
+              data: {
+                title: 'Maximum limit reached',
+                body: 'You can only create a maximum of 5 watches.'
+              }
+            }).afterClosed();    
           }
         }));
   }

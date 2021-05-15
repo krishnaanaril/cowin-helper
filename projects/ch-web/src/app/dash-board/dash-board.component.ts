@@ -31,24 +31,6 @@ export class DashBoardComponent implements OnInit {
     this.activeWatches$ = this.watchService.getWatches();
   }
 
-  notifyTest() {
-    Notification.requestPermission().then((permission) => {
-      console.log(permission);
-      if (Notification.permission === "granted") {
-        navigator.serviceWorker.getRegistration().then((reg) => {
-          console.log(reg);
-          reg.showNotification("Cowin Helper", {
-            body: 'This is a sample message',
-            icon: 'assets/icons/icon-96x96.png',
-            data: {
-              url: 'http://localhost:8080/dashboard'
-            }
-          });
-        })
-      }
-    });
-  }
-
   addWatch() {
     this.dialog.open(AddWatcherComponent, {
       panelClass: 'w-80',
