@@ -39,6 +39,7 @@ export class DashBoardComponent implements OnInit {
 
   notifyTest() {
     navigator.serviceWorker.addEventListener('periodicsync', (event: any) => {
+      alert('periodic syc evnet inside'+ event.tag);
       if (event.tag === 'content-sync') {
         // See the "Think before you sync" section for
         // checks you could perform before syncing.
@@ -82,6 +83,15 @@ export class DashBoardComponent implements OnInit {
           }
         });
       } else {
+        navigator.serviceWorker.getRegistration().then((reg: any) => {
+          reg.showNotification("Cowin Helper", {
+            body: 'This is a sample message',
+            icon: 'assets/icons/icon-96x96.png',
+            data: {
+              url: 'http://localhost:8080/dashboard'
+            }
+          });
+        });
         // Periodic background sync cannot be used.
         this.message += '\n not granted periodic sync';
         console.error('not granted periodic sync')
