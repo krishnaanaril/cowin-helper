@@ -31,6 +31,10 @@ export class DashBoardComponent implements OnInit {
     this.activeWatches$ = this.watchService.getWatches();
   }
 
+  trackByWatchId(index: number, item: WatchInfo) {
+    return item.id;
+  }
+
   addWatch() {
     this.dialog.open(AddWatcherComponent, {
       panelClass: 'w-80',

@@ -39,12 +39,12 @@
 <mat-divider></mat-divider>
 <div class="px-2 py-2">
     <div *ngIf="centersForDay?.length > 0">
-        <div *ngFor="let center of centersForDay" class="mb-2">
+        <div *ngFor="let center of centersForDay; trackBy:trackByCenterId" class="mb-2">
             <ch-day-center-info [center]="center"></ch-day-center-info>
         </div>
     </div>
     <div *ngIf="centersForWeek?.length > 0">
-        <div *ngFor="let center of centersForWeek" class="mb-2">                
+        <div *ngFor="let center of centersForWeek; trackBy:trackByCenterId" class="mb-2">                
             <ch-week-center-info [center]="center"></ch-week-center-info>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <div>
-    <div *ngFor="let center of (watchDetails | async)">
+    <div *ngFor="let center of (watchDetails | async); trackBy:trackByCenterId">
         <ch-week-center-info [center]="center"></ch-week-center-info>
     </div>
 </div>

@@ -121,6 +121,10 @@ export class UseDistrictComponent implements OnInit, OnDestroy {
     }
   }
 
+  trackByCenterId(index: number, item: CenterForDay|CenterForWeek) {
+    return item.center_id;
+  }
+
   ngOnDestroy() {
     this.componentDestroyed$.next(true);
     this.componentDestroyed$.unsubscribe();

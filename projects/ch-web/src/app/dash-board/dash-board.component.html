@@ -1,7 +1,7 @@
 <div>
     <mat-list>
         <div mat-subheader>Active Watches</div>
-        <mat-list-item class="my-2" *ngFor="let watch of (activeWatches$ | async)">
+        <mat-list-item class="my-2" *ngFor="let watch of (activeWatches$ | async); trackBy:trackByWatchId">
             <mat-icon color="accent" mat-list-icon>track_changes</mat-icon>
             <div mat-line [routerLink]="['/watch-details', watch.id]">
                 <div>

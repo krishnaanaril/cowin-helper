@@ -34,6 +34,10 @@ export class WatchDetailsComponent implements OnInit {
     );
   }
 
+  trackByCenterId(index: number, item: CenterForWeek) {
+    return item.center_id;
+  }
+
   goBack() {
     this.location.back();
   }
