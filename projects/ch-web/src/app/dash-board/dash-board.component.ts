@@ -62,4 +62,16 @@ export class DashBoardComponent implements OnInit {
       })
   }
 
+  sendAndReceive() {
+    navigator.serviceWorker.controller.postMessage({
+      type: 'FROM_APP'
+    });
+
+    navigator.serviceWorker.onmessage = (event)=>{
+      if(event.data && event.data.type === 'FROM_SW') {
+        console.log('Message received from SW');
+      }
+    }
+  }
+
 }
