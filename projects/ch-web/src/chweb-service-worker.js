@@ -34,17 +34,27 @@ importScripts('./utilities.js');
 
     self.addEventListener('periodicsync', (event) => {
         if (event.tag === 'content-sync') {
-          // See the "Think before you sync" section for
-          // checks you could perform before syncing.
-          event.waitUntil(syncContent());
+            // See the "Think before you sync" section for
+            // checks you could perform before syncing.
+            self.registration.showNotification('Yee Ha, Content Sync');
+            event.waitUntil(syncContent());
         }
         // Other logic for different tags as needed.
-      });
+    });
 
     self.addEventListener('message', (event) => {
         if (event.data && event.data.type === 'FROM_APP') {
             console.log('message received from app');
-            self.registration.showNotification('message received from app');
+            if ('periodicSync' in self.registration) {
+                self.registration.periodicSync.getTags().then((tags) => {
+                    if (!tags.includes('content-sync')) {
+                        self.registration.showNotification('Content Sync Not found');
+                    } else {
+                        self.registration.showNotification('Content Sync Success');
+                    }
+                });
+            }
+
             self.clients.matchAll().then((clients) => {
                 if (clients && clients.length) {
                     //Respond to last focused tab
