@@ -224,10 +224,8 @@ function entries() {
 // Other functions
 
 function displayNotification(message) {
-    if (Notification.permission == 'granted') {
-        navigator.serviceWorker.getRegistration().then(function (reg) {
-            reg.showNotification(message);
-        });
+    if (Notification.permission == 'granted') {        
+        self.registration.showNotification(message);        
     }
 }
 

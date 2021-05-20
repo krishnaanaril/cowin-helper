@@ -36,7 +36,7 @@ importScripts('./utilities.js');
         if (event.tag === 'content-sync') {
             // See the "Think before you sync" section for
             // checks you could perform before syncing.
-            self.registration.showNotification('Yee Ha, Content Sync');
+            displayNotification('Yee Ha, Content Sync');
             event.waitUntil(syncContent());
         }
         // Other logic for different tags as needed.
@@ -48,9 +48,9 @@ importScripts('./utilities.js');
             if ('periodicSync' in self.registration) {
                 self.registration.periodicSync.getTags().then((tags) => {
                     if (!tags.includes('content-sync')) {
-                        self.registration.showNotification('Content Sync Not found');
+                        displayNotification('Content Sync Not found');
                     } else {
-                        self.registration.showNotification('Content Sync Success');
+                        displayNotification('Content Sync Success');
                     }
                 });
             }
