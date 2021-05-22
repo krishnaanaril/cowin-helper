@@ -1,29 +1,26 @@
-<mat-card class="px-2 py-2">
+<mat-card class="m-2">
     <div class="flex flex-row justify-start bg-yellow-50 p-4 rounded-2xl">
         <div class="flex align-baseline p-2">
             <mat-icon color="accent" class="icon-place">place</mat-icon>
         </div>
         <div>
             <h2 class="m-0 text-lg">{{center.name}}</h2>
-            <h3 class="m-0 text-base text-gray-400">{{center.address}}, {{center.district_name}}, {{center.pincode}}</h3>
-            <h3 class="m-0 text-base text-gray-400">{{center.state_name}}</h3>
-            <h3 class="m-0 text-base text-gray-400 time-section">
-                <mat-icon color="warn">access_time</mat-icon>
-                <span>{{'1970-01-01T' + center.from + 'Z' | date:'shortTime':'GMT'}} - {{'1970-01-01T' + center.to + 'Z' | date:'shortTime':'GMT'}}</span>
+            <h3 class="m-0 text-sm text-gray-400">{{center.address}}, {{center.district_name}}, {{center.pincode}}</h3>
+            <h3 class="m-0 text-sm text-gray-400">{{center.state_name}}</h3>
+            <h3 class="m-0 text-sm text-gray-400 flex flex-row justify-start mt-1">
+                <mat-icon class="mr-2" color="warn">access_time</mat-icon>
+                <span class="font-bold">{{'1970-01-01T' + center.from + 'Z' | date:'shortTime':'GMT'}} - {{'1970-01-01T' + center.to + 'Z' | date:'shortTime':'GMT'}}</span>
             </h3>
         </div>
     </div>    
     <div class="flex flex-row justify-start overflow-x-scroll py-3">
-        <div *ngFor="let session of center.sessions" class="px-2 bg-green-50 mr-4 rounded-lg">
-            <div class="mb-2">
-                <div class="text-center text-sm font-semibold py-2">
+        <div *ngFor="let session of center.sessions" class="p-2 w-1/5 bg-green-50 mr-4 rounded-lg" (click)="viewCenterDetails(session)">
+            <div>
+                <div class="text-center text-sm font-semibold mb-2">
                     {{session.date | dateFromString | date:'MMM'}}
                 </div>
-                <div class="text-center pt-0 pb-3 text-2xl font-bold">
+                <div class="text-center text-2xl font-bold">
                     {{session.date | dateFromString | date:'d'}}
-                </div>
-                <div class="pb-2">
-                    <button mat-flat-button class="bg-green-600 text-gray-50 font-semibold focus:outline-none" (click)="viewCenterDetails(session)">Details</button>
                 </div>
             </div>            
         </div>

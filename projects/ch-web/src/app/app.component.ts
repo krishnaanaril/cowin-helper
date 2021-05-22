@@ -23,10 +23,8 @@ export class AppComponent implements OnInit {
     { icon: 'info', label: 'About', link: '/about' },
   ];
   progressBarConfiguration: ProgressBarConfiguration;
-  activeRequests: Observable<number>;
-  periodicSyncSupport: Observable<boolean>;
-  periodicSyncTime: Observable<Date>;
-  appVersion = version;
+  activeRequests: Observable<number>;  
+  appVersion = version;  
 
   constructor(
     private readonly progressBarService: ProgressBarService,
@@ -44,12 +42,24 @@ export class AppComponent implements OnInit {
       .subscribe((configuration: ProgressBarConfiguration) => {
         this.progressBarConfiguration = { ...configuration };
       });
+    if(this.getPWADisplayMode() !== "standalone") {
+      this.options.splice(2, 1);
+    }
   }
 
   fetchActiveRequests() {
     this.activeRequests = this.storageService.getItem('activeRequests')
       .pipe(map((activeRequests: RequestQueue[]) => activeRequests?.length));
-    this.periodicSyncSupport = this.storageService.getItem('periodicSyncSupport');      
-    this.periodicSyncTime = this.storageService.getItem('periodicSyncTime');
+    
+  }
+
+  getPWADisplayMode() {
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    if (document.referrer.startsWith('android-app://')) {
+      return 'twa';
+    } else if ((<any>navigator).standalone || isStandalone) {
+      return 'standalone';
+    }
+    return 'browser';
   }
 }

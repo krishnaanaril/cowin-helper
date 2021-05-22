@@ -223,12 +223,54 @@ function entries() {
 // export { clear, createStore, del, entries, get, getMany, keys, promisifyRequest, set, setMany, update, values };
 // Other functions
 
-function displayNotification(message) {
-    if (Notification.permission == 'granted') {        
-        self.registration.showNotification(message);        
+function displayNotification(title, body) {
+    if (Notification.permission == 'granted') {
+        const options = {
+            badge: 'assets/icons/icon-96x96.png',
+            icon: 'assets/icons/icon-96x96.png',
+            body: body,
+            data: {
+                url: 'https://cowin-helper.krishnamohan.dev/dashboard'
+            }
+        };
+        self.registration.showNotification(title, options);
     }
 }
 
-function syncContent() {
-    set('periodicSyncTime', new Date());
+const syncContent = async () => {
+    const watches = await get('activeWatches');
+    const urlBase = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public';
+    const currentDate = new Date();
+    const dateString = `${currentDate.getDate()}-${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`;
+    const updatedWatches = [];
+    if (watches && watches.length > 0) {
+        for (let watch of watches) {
+            let requestUrl = '';
+            if (watch.type === 0) {
+                requestUrl = `${urlBase}/calendarByPin?pincode=${watch.pin}&date=${dateString}`;
+            } else {
+                requestUrl = `${urlBase}/calendarByDistrict?district_id=${watch.districtId}&date=${dateString}`;
+            }
+            const newCenters = await fetch(requestUrl)
+                .then(response => response.json())
+                .then(data => data.centers);
+            watch = await updateDeltaValues(watch, newCenters);
+            updatedWatches.push(watch);
+            await set(watch.id, newCenters);
+        };
+    }
+
+    await set('activeWatches', updatedWatches);
+    displayNotification('Watches Updated', 'Your watches updated in the background.');
+}
+
+const updateDeltaValues = async (watchInfo, newCenters) => {
+    const previousTotalCenters = watchInfo?.totalCenters ?? 0;
+    const previousTotalJabs = watchInfo?.totalJabs ?? 0;
+    watchInfo.totalCenters = newCenters.length;
+    watchInfo.totalJabs = newCenters.reduce((prev01, center) => prev01 + center.sessions.reduce((prev02, session) => prev02 + session.available_capacity, 0), 0);
+    watchInfo.lastUpdated = new Date();
+    watchInfo.deltaCenters = watchInfo.totalCenters - previousTotalCenters;
+    watchInfo.deltaJabs = watchInfo.totalJabs - previousTotalJabs;
+    return watchInfo;
 }

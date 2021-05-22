@@ -31,7 +31,8 @@
     {
       "name": "api-performance",
       "urls": [
-        "https://cdn-api.co-vin.in/api/v2/admin/location/**"
+        "https://cdn-api.co-vin.in/api/v2/admin/location/**",
+        "https://fonts.googleapis.com/**"
       ],
       "cacheConfig": {
         "strategy": "performance",

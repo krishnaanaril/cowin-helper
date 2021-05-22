@@ -11,15 +11,11 @@
     <mat-divider></mat-divider>
     <div *ngIf="(activeRequests | async)" class="h-12 text-center py-2 align-baseline">
       {{activeRequests | async}} requests in last 5 mins.
-    </div>
-    <div *ngIf="(periodicSyncSupport | async) != null" class="h-12 text-center py-2 align-baseline">
-      Sync Support: {{periodicSyncSupport | async}}
-    </div>
-    <div *ngIf="(periodicSyncTime | async)" class="h-12 text-center py-2 align-baseline">
-      Last Update: {{periodicSyncTime | async}} 
-    </div>
+    </div>   
     <div *ngIf="appVersion" class="h-12 text-center py-2 align-baseline">
-      {{appVersion}}
+      <div>
+        <span>Version: {{appVersion}}</span>
+      </div>
     </div>
   </mat-drawer>
 
