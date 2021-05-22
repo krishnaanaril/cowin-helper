@@ -1,1 +1,14 @@
-<p>settings works!</p>
+<div>    
+    <mat-list>
+        <div mat-subheader>Settings</div>
+        <mat-list-item class="text-sm">
+            <mat-slide-toggle [formControl]="enablePeriodicSync">Enable Periodic Sync</mat-slide-toggle>
+        </mat-list-item>        
+      </mat-list>      
+      <div class="mx-5 my-5 p-5 bg-green-100 rounded-xl">
+          <article>
+            Periodic Background Sync enables web applications to periodically synchronize data in the background.
+            <a href="https://web.dev/periodic-background-sync">More details.</a>
+          </article>
+      </div>
+</div>

@@ -3,7 +3,7 @@
         <div mat-subheader>Active Watches</div>
         <mat-list-item class="my-2" *ngFor="let watch of (activeWatches$ | async); trackBy:trackByWatchId">
             <mat-icon color="accent" mat-list-icon>track_changes</mat-icon>
-            <div mat-line [routerLink]="['/watch-details', watch.id]">
+            <div mat-line class="cursor-pointer" [routerLink]="['/watch-details', watch.id]">
                 <div>
                     <span *ngIf="watch.pin; else displayDistrict" class="font-semibold text-gray-700">Pin:
                         {{watch.pin}}</span>
@@ -12,8 +12,10 @@
                     </ng-template>
                 </div>
             </div>
-            <div mat-line class="text-gray-500 text-base">Last updated: {{watch.lastUpdated | date:'d/M/y, h:mm a'}} </div>
-            <div mat-line>
+            <div mat-line class="text-gray-500 text-base cursor-pointer" [routerLink]="['/watch-details', watch.id]">
+                Last updated: {{watch.lastUpdated | date:'d/M/y, h:mm a'}} 
+            </div>
+            <div mat-line class="cursor-pointer" [routerLink]="['/watch-details', watch.id]">
                 <div>
                     <span *ngIf="watch?.deltaCenters >= 0; else displayReducedCenters" class="align-text-bottom text-green-700 font-semibold">{{localMath.abs(watch.totalCenters)}} Centers</span>
                     <ng-template #displayReducedCenters>
@@ -52,9 +54,6 @@
         </mat-list-item>
         <mat-divider></mat-divider>
     </mat-list>
-</div>
-<div class="py-5">
-    <button mat-raised-button type="submit" color="primary" (click)="sendAndReceive()">Search</button>
 </div>
 <div class="fixed bottom-7 right-7">
     <button mat-fab aria-label="Add new repository" class="focus:outline-none" (click)="addWatch()">
