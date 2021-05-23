@@ -7,6 +7,8 @@ import { SearchAvailabilityComponent } from './search-availability/search-availa
 import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DayCenterInfoComponent } from './day-center-info/day-center-info.component';
+import { SharedModule } from '../shared/shared.module';
+
 
 const routes: Routes = [
   {
@@ -19,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
+  declarations: [    
     DayCenterInfoComponent,
     SearchAvailabilityComponent,
     UseDistrictComponent,
@@ -29,7 +31,8 @@ const routes: Routes = [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ]
 })
 export class SearchModule { }

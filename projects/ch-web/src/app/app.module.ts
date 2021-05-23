@@ -15,7 +15,6 @@ import { HttpProgressInterceptor } from './interceptors/http-progress.intercepto
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { DatePipe } from '@angular/common';
-import { DateFromStringPipe } from './pipes/date-from-string.pipe';
 import { RequestLimiterInterceptor } from './interceptors/request-limiter.interceptor';
 import { WatchDetailsComponent } from './watch-details/watch-details.component';
 import { SharedModule } from './shared/shared.module';
@@ -26,8 +25,7 @@ import { SharedModule } from './shared/shared.module';
     DashBoardComponent,
     AddWatcherComponent,
     AboutComponent,
-    SettingsComponent,    
-    DateFromStringPipe,  
+    SettingsComponent,        
     WatchDetailsComponent
   ],
   imports: [

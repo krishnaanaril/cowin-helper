@@ -5,10 +5,12 @@ import { WeekCenterDetailsComponent } from './week-center-details/week-center-de
 import { WeekCenterInfoComponent } from './week-center-info/week-center-info.component';
 import { CustomAlertComponent } from './custom-alert/custom-alert.component';
 import { MaterialModule } from '../material.module';
+import { DateFromStringPipe } from './pipes/date-from-string.pipe';
 
 
 @NgModule({
   declarations: [
+    DateFromStringPipe,
     NotFoundComponent,
     WeekCenterDetailsComponent,
     WeekCenterInfoComponent,
@@ -19,6 +21,7 @@ import { MaterialModule } from '../material.module';
     MaterialModule
   ], 
   exports: [
+    DateFromStringPipe,
     NotFoundComponent,
     WeekCenterDetailsComponent,
     WeekCenterInfoComponent,
