@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../models/dialog-data';
-import { Session } from '../models/session';
+import { DialogData } from '../../models/dialog-data';
 
 @Component({
   selector: 'ch-week-center-details',

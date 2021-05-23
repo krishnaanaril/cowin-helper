@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CenterForWeek } from '../models/center-for-week';
-import { Session } from '../models/session';
+import { CenterForWeek } from '../../models/center-for-week';
+import { Session } from '../../models/session';
 import { WeekCenterDetailsComponent } from '../week-center-details/week-center-details.component';
 
 @Component({

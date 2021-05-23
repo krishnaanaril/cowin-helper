@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EMPTY, forkJoin, Observable } from 'rxjs';
 import { concatMap, map, switchMap } from 'rxjs/operators';
 import { CowinDataService } from './cowin-data.service';
-import { CustomAlertComponent } from './custom-alert/custom-alert.component';
+import { CustomAlertComponent } from './shared/custom-alert/custom-alert.component';
 import { IdbService } from './idb.service';
 import { CenterForWeek } from './models/center-for-week';
 import { WatchInfo, WatchType } from './models/watch-info';

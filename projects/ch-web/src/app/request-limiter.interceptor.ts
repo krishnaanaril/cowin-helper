@@ -10,7 +10,7 @@ import { IdbService } from './idb.service';
 import { RequestQueue } from './models/request-queue';
 import { concatMap, flatMap, map, mergeMap, switchMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomAlertComponent } from './custom-alert/custom-alert.component';
+import { CustomAlertComponent } from './shared/custom-alert/custom-alert.component';
 
 @Injectable()
 export class RequestLimiterInterceptor implements HttpInterceptor {

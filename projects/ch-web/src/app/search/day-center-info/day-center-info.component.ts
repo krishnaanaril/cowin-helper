@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CenterForDay } from '../models/center-for-day';
+import { CenterForDay } from '../../models/center-for-day';
 
 @Component({
   selector: 'ch-day-center-info',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuOption } from '../models/menu-option';
+import { MenuOption } from '../../models/menu-option';
 
 @Component({
   selector: 'ch-search-availability',

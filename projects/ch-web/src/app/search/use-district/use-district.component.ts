@@ -2,11 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, of, Subject } from 'rxjs';
 import { debounceTime, map, startWith, takeUntil, tap } from 'rxjs/operators';
-import { CowinDataService } from '../cowin-data.service';
-import { CenterForDay } from '../models/center-for-day';
-import { CenterForWeek } from '../models/center-for-week';
-import { District } from '../models/district';
-import { State } from '../models/state';
+import { CowinDataService } from '../../cowin-data.service';
+import { CenterForDay } from '../../models/center-for-day';
+import { CenterForWeek } from '../../models/center-for-week';
+import { District } from '../../models/district';
+import { State } from '../../models/state';
 
 export interface SearchByDistrictData {
   selectedState: State;
