@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IdbService } from './idb.service';
+import { IdbService } from './services/idb.service';
 import { MenuOption } from './models/menu-option';
 import { ProgressBarConfiguration } from './models/progress-bar-configuration';
 import { RequestQueue } from './models/request-queue';
-import { ProgressBarService } from './progress-bar.service';
+import { ProgressBarService } from './services/progress-bar.service';
 import { version } from '../../../../package.json';
 
 @Component({
