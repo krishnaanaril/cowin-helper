@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { ProgressBarConfiguration } from './models/progress-bar-configuration';
+import { ProgressBarConfiguration } from '../models/progress-bar-configuration';
 
 @Injectable({
   providedIn: 'root'

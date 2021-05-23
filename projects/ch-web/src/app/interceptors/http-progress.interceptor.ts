@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { ProgressBarService } from './progress-bar.service';
+import { ProgressBarService } from '../services/progress-bar.service';
 
 @Injectable()
 export class HttpProgressInterceptor implements HttpInterceptor {

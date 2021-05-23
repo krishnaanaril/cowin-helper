@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { CenterForWeek } from '../models/center-for-week';
-import { WatchService } from '../watch.service';
+import { WatchService } from '../services/watch.service';
 
 @Component({
   selector: 'ch-watch-details',

@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from '../environments/environment';
-import { CenterForDay } from './models/center-for-day';
-import { CenterForWeek } from './models/center-for-week';
-import { District } from './models/district';
-import { State } from './models/state';
+import { environment } from '../../environments/environment';
+import { CenterForDay } from '../models/center-for-day';
+import { CenterForWeek } from '../models/center-for-week';
+import { District } from '../models/district';
+import { State } from '../models/state';
 
 @Injectable({
   providedIn: 'root'

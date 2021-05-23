@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { CowinDataService } from 'projects/ch-web/src/app/cowin-data.service';
+import { CowinDataService } from 'projects/ch-web/src/app/services/cowin-data.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CenterForDay } from '../../models/center-for-day';

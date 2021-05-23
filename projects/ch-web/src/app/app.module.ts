@@ -6,18 +6,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { AddWatcherComponent } from './add-watcher/add-watcher.component';
 import { AboutComponent } from './about/about.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpProgressInterceptor } from './http-progress.interceptor';
+import { HttpProgressInterceptor } from './interceptors/http-progress.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { DatePipe } from '@angular/common';
-import { DateFromStringPipe } from './date-from-string.pipe';
-import { RequestLimiterInterceptor } from './request-limiter.interceptor';
+import { DateFromStringPipe } from './pipes/date-from-string.pipe';
+import { RequestLimiterInterceptor } from './interceptors/request-limiter.interceptor';
 import { WatchDetailsComponent } from './watch-details/watch-details.component';
 import { SharedModule } from './shared/shared.module';
 
