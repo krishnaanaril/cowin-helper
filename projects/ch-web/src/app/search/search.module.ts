@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsePinComponent } from './use-pin/use-pin.component';
 import { UseDistrictComponent } from './use-district/use-district.component';
 import { SearchAvailabilityComponent } from './search-availability/search-availability.component';
-import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DayCenterInfoComponent } from './day-center-info/day-center-info.component';
 import { SharedModule } from '../shared/shared.module';
@@ -28,8 +27,7 @@ const routes: Routes = [
     UsePinComponent
   ],
   imports: [
-    CommonModule,
-    MaterialModule,
+    CommonModule,    
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     SharedModule

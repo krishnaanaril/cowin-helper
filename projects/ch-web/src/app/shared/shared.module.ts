@@ -26,6 +26,7 @@ import { DateFromStringPipe } from './pipes/date-from-string.pipe';
     WeekCenterDetailsComponent,
     WeekCenterInfoComponent,
     CustomAlertComponent,
+    MaterialModule
   ]
 })
 export class SharedModule { }

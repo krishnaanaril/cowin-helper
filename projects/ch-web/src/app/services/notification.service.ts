@@ -2,7 +2,7 @@ import { ApplicationRef, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SwPush, SwUpdate } from '@angular/service-worker';
 import { first, switchMap } from 'rxjs/operators';
-import { CustomAlertComponent } from './custom-alert/custom-alert.component';
+import { CustomAlertComponent } from '../shared/custom-alert/custom-alert.component';
 
 @Injectable({
   providedIn: 'root'

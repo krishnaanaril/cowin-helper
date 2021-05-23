@@ -1,13 +1,11 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { AddWatcherComponent } from '../add-watcher/add-watcher.component';
-import { IdbService } from '../services/idb.service';
-import { CenterForDay } from '../models/center-for-day';
-import { WatchInfo } from '../models/watch-info';
-import { WatchService } from '../services/watch.service';
+import { IdbService } from '../../services/idb.service';
+import { WatchInfo } from '../../models/watch-info';
+import { WatchService } from '../../services/watch.service';
 
 
 @Component({

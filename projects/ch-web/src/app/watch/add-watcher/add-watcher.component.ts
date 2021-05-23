@@ -3,13 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
-import { CowinDataService } from '../services/cowin-data.service';
-import { District } from '../models/district';
-import { State } from '../models/state';
-import { WatchInfo, WatchType } from '../models/watch-info';
+import { CowinDataService } from '../../services/cowin-data.service';
+import { District } from '../../models/district';
+import { State } from '../../models/state';
+import { WatchInfo, WatchType } from '../../models/watch-info';
 import { v4 as uuidv4 } from 'uuid';
-import { CenterForWeek } from '../models/center-for-week';
-import { WatchService } from '../services/watch.service';
+import { CenterForWeek } from '../../models/center-for-week';
+import { WatchService } from '../../services/watch.service';
 
 @Component({
   selector: 'ch-add-watcher',

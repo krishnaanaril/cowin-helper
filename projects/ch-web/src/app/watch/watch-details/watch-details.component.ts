@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { CenterForWeek } from '../models/center-for-week';
-import { WatchService } from '../services/watch.service';
+import { CenterForWeek } from '../../models/center-for-week';
+import { WatchService } from '../../services/watch.service';
 
 @Component({
   selector: 'ch-watch-details',
