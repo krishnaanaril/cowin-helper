@@ -8,7 +8,7 @@ Cowin-Helper is an open source progressive web application created using Co-Win 
 
 ## Screen shots
 
-
+Screen shots             |  Screen shots
 :-------------------------:|:-------------------------:
 ![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(1).png "Lighthouse Score") | ![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(3).png "Lighthouse Score")
 ![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(5).png "Lighthouse Score") | ![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(8).png "Lighthouse Score")
