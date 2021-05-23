@@ -3,14 +3,13 @@ Cowin-Helper is an open source progressive web application created using Co-Win 
 
 ## Lighthouse Score
 
+
 ![Dashboard](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(2).png "Dashboard")
 
 ## Screen shots
 
-![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(5).png "Lighthouse Score")
 
-![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(8).png "Lighthouse Score")
-
-![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(9).png "Lighthouse Score")
-
-![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(11).png "Lighthouse Score")
+:-------------------------:|:-------------------------:
+![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(1).png "Lighthouse Score") | ![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(3).png "Lighthouse Score")
+![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(5).png "Lighthouse Score") | ![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(8).png "Lighthouse Score")
+![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(9).png "Lighthouse Score") | ![Lighthouse Score for Cowin-Helper](https://github.com/krishnaanaril/cowin-helper/blob/main/screenshots/ch-screenshots%20(11).png "Lighthouse Score")
