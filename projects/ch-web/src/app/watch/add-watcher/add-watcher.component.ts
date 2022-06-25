@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
@@ -20,14 +20,14 @@ export class AddWatcherComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AddWatcherComponent>,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private dataService: CowinDataService,
     private watchService: WatchService
   ) { 
     this.componentDestroyed$ = new Subject<false>();
   }
 
-  watchForm: FormGroup = this.formBuilder.group({
+  watchForm: UntypedFormGroup = this.formBuilder.group({
     watchByDistrictForm: this.formBuilder.group({
       selectedState: ['', [Validators.required]],
       selectedDistrict: ['', [Validators.required]]    
