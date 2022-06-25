@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { CowinDataService } from 'projects/ch-web/src/app/services/cowin-data.service';
 import { Subject } from 'rxjs';
@@ -21,7 +21,7 @@ export interface SearchByPinData {
 export class UsePinComponent implements OnInit {
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private dataService: CowinDataService
   ) {
     const currentDate = new Date();
@@ -31,7 +31,7 @@ export class UsePinComponent implements OnInit {
     this.componentDestroyed$ = new Subject<false>();
   }
 
-  searchForm: FormGroup = this.formBuilder.group({
+  searchForm: UntypedFormGroup = this.formBuilder.group({
     pin: ['', [Validators.required, Validators.pattern('^[1-9][0-9]{5}$')]],
     date: ['', [Validators.required]],
     isForWeek: ['']

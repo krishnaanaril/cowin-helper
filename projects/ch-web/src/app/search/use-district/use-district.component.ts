@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, of, Subject } from 'rxjs';
 import { debounceTime, map, startWith, takeUntil, tap } from 'rxjs/operators';
 import { CowinDataService } from '../../services/cowin-data.service';
@@ -23,7 +23,7 @@ export interface SearchByDistrictData {
 export class UseDistrictComponent implements OnInit, OnDestroy {
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private dataService: CowinDataService
   ) {
     const currentDate = new Date();
@@ -33,7 +33,7 @@ export class UseDistrictComponent implements OnInit, OnDestroy {
     this.componentDestroyed$ = new Subject<false>();
   }
 
-  searchForm: FormGroup = this.formBuilder.group({
+  searchForm: UntypedFormGroup = this.formBuilder.group({
     selectedState: ['', [Validators.required]],
     selectedDistrict: ['', [Validators.required]],
     date: ['', [Validators.required]],

@@ -1,6 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 export class SettingsComponent implements OnInit, OnDestroy {
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {
     this.componentDestroyed$ = new Subject<false>();
   }

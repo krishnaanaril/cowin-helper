@@ -6,7 +6,7 @@ import { MenuOption } from './models/menu-option';
 import { ProgressBarConfiguration } from './models/progress-bar-configuration';
 import { RequestQueue } from './models/request-queue';
 import { ProgressBarService } from './services/progress-bar.service';
-import { version } from '../../../../package.json';
+import packageInfo from '../../../../package.json';
 
 @Component({
   selector: 'ch-root',
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   ];
   progressBarConfiguration: ProgressBarConfiguration;
   activeRequests: Observable<number>;  
-  appVersion = version;  
+  appVersion = packageInfo.version;  
 
   constructor(
     private readonly progressBarService: ProgressBarService,

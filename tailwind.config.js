@@ -1,6 +1,5 @@
 module.exports = {
-  purge: ['./projects/ch-web/src/**/*.{html,ts}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./projects/ch-web/src/**/*.{html,ts}'],
   theme: {
     extend: {},
   },
@@ -8,8 +7,8 @@ module.exports = {
     extend: {},
   },
   plugins: [require('@tailwindcss/aspect-ratio')
-,require('@tailwindcss/forms')
-,require('@tailwindcss/line-clamp')
-,require('@tailwindcss/typography')
-],
+    , require('@tailwindcss/forms')
+    , require('@tailwindcss/line-clamp')
+    , require('@tailwindcss/typography')
+  ],
 };
