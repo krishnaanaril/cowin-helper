@@ -1,6 +1,5 @@
 module.exports = {
-  purge: ['./projects/ch-web/src/**/*.{html,ts}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./projects/ch-web/src/**/*.{html,ts}'],
   theme: {
     extend: {},
   },
