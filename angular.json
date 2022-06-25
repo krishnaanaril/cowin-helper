@@ -22,7 +22,6 @@
             "main": "projects/ch-web/src/main.ts",
             "polyfills": "projects/ch-web/src/polyfills.ts",
             "tsConfig": "projects/ch-web/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/ch-web/src/favicon.ico",
               "projects/ch-web/src/assets",
@@ -36,7 +35,13 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/ch-web/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -68,7 +73,8 @@
               "serviceWorker": true,
               "ngswConfigPath": "projects/ch-web/ngsw-config.json"
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
