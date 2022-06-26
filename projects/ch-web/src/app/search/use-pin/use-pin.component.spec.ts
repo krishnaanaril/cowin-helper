@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UntypedFormBuilder } from '@angular/forms';
+import { CowinDataServiceMock } from '../../mocks/data-service-mock';
+import { CowinDataService } from '../../services/cowin-data.service';
 
 import { UsePinComponent } from './use-pin.component';
 
@@ -8,7 +11,11 @@ describe('UsePinComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UsePinComponent ]
+      declarations: [ UsePinComponent ], 
+      providers: [
+        UntypedFormBuilder,
+        { provide: CowinDataService, useClass: CowinDataServiceMock}
+      ]
     })
     .compileComponents();
   });

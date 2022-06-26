@@ -1,4 +1,4 @@
-import { of } from "rxjs";
+import { Observable, of } from "rxjs";
 import { CenterForWeek } from "../models/center-for-week";
 import { WatchInfo } from "../models/watch-info";
 
@@ -8,6 +8,14 @@ export class WatchServiceMock {
     }
 
     addWatch(newWatch: WatchInfo, centers: CenterForWeek[]) {
+        return of();
+    }
+
+    getWatchDetails(watchId: string) {
+        return of([]);
+    }
+
+    getWatches(): Observable<WatchInfo[]> {
         return of();
     }
 }

@@ -17,8 +17,7 @@ export class DashBoardComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private watchService: WatchService,
-    private dbService: IdbService,
+    private watchService: WatchService,    
     private snackBar: MatSnackBar
   ) { }
 
