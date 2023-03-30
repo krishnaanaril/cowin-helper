@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { SearchAvailabilityComponent } from './search-availability.component';
 
@@ -8,6 +9,7 @@ describe('SearchAvailabilityComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ RouterTestingModule ],
       declarations: [ SearchAvailabilityComponent ]
     })
     .compileComponents();

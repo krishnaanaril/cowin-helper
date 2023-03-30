@@ -17,7 +17,7 @@ export class NotificationService {
     /**
      * Reload page when update is available
      */
-    updates.available
+    updates.versionUpdates
       .pipe(switchMap(() => {
         return this.dialog.open(CustomAlertComponent, {
           data: {

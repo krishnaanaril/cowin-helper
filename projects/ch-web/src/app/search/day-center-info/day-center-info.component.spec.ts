@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { centerForDayMock } from '../../mocks/center-mock';
 
 import { DayCenterInfoComponent } from './day-center-info.component';
 
@@ -16,10 +17,11 @@ describe('DayCenterInfoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DayCenterInfoComponent);
     component = fixture.componentInstance;
+    component.center = centerForDayMock;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () => {    
     expect(component).toBeTruthy();
   });
 });
