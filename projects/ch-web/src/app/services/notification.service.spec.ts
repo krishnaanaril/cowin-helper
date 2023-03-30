@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { SwUpdate } from '@angular/service-worker';
 import { of } from 'rxjs';
 import { MatDialogMock } from '../mocks/mat-dialog-mock';

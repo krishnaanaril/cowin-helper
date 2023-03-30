@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogMock } from '../../mocks/mat-dialog-mock';
 import { MatSnackBarMock } from '../../mocks/snack-bar-mock';
 import { WatchServiceMock } from '../../mocks/watch-service-mock';

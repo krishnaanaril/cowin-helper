@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { EMPTY, forkJoin, Observable } from 'rxjs';
 import { concatMap, map, switchMap } from 'rxjs/operators';
 import { CowinDataService } from './cowin-data.service';

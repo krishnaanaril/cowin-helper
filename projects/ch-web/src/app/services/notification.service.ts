@@ -1,5 +1,5 @@
 import { ApplicationRef, Injectable } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { SwPush, SwUpdate } from '@angular/service-worker';
 import { first, switchMap } from 'rxjs/operators';
 import { CustomAlertComponent } from '../shared/custom-alert/custom-alert.component';

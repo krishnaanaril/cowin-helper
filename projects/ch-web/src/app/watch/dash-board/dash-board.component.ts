@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { AddWatcherComponent } from '../add-watcher/add-watcher.component';
 import { IdbService } from '../../services/idb.service';
@@ -17,7 +17,7 @@ export class DashBoardComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private watchService: WatchService,    
+    private watchService: WatchService,
     private snackBar: MatSnackBar
   ) { }
 

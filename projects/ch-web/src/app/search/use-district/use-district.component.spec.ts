@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UntypedFormBuilder } from '@angular/forms';
-import { MatLegacyAutocomplete as MatAutocomplete } from '@angular/material/legacy-autocomplete';
+import { MatAutocomplete } from '@angular/material/autocomplete';
 import { CowinDataServiceMock } from '../../mocks/data-service-mock';
 import { CowinDataService } from '../../services/cowin-data.service';
 

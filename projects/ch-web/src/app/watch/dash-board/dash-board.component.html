@@ -2,7 +2,7 @@
     <mat-list>
         <div mat-subheader>Active Watches</div>
         <mat-list-item class="my-2" *ngFor="let watch of (activeWatches$ | async); trackBy:trackByWatchId">
-            <mat-icon color="accent" mat-list-icon>track_changes</mat-icon>
+            <mat-icon color="accent" mat-list-icon fontIcon="track_changes"></mat-icon>
             <div mat-line class="cursor-pointer" [routerLink]="['/dashboard/watch-details', watch.id]">
                 <div>
                     <span *ngIf="watch.pin; else displayDistrict" class="font-semibold text-gray-700">Pin:

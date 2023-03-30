@@ -3,7 +3,7 @@
     <mat-list>
       <div mat-subheader>Cowin Helper</div>
       <mat-list-item *ngFor="let option of options" [routerLink]="option.link" routerLinkActive="bg-yellow-300 rounded-r-full" (click)="drawer.toggle()">
-        <mat-icon mat-list-icon>{{option.icon}}</mat-icon>
+        <mat-icon mat-list-icon [fontIcon]="option.icon"></mat-icon>
         <div mat-line>{{option.label}}</div>
       </mat-list-item>
       <mat-divider></mat-divider>
@@ -22,7 +22,7 @@
   <div class="max-w-3xl mx-auto my-0">
     <mat-toolbar color="primary">
       <button mat-icon-button aria-label="Cowin Helper Menu Options" class="focus:outline-none" (click)="drawer.toggle();fetchActiveRequests()">
-        <mat-icon aria-hidden="false">menu</mat-icon>
+        <mat-icon aria-hidden="false" fontIcon="menu"></mat-icon>
       </button>
       <span class="w-full">Cowin Helper</span>      
     </mat-toolbar>

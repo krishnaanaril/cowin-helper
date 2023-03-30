@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CenterForWeek } from '../../models/center-for-week';
 import { Session } from '../../models/session';
 import { WeekCenterDetailsComponent } from '../week-center-details/week-center-details.component';
