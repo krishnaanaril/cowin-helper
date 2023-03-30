@@ -9,7 +9,7 @@ import { EMPTY, from, iif, Observable, of } from 'rxjs';
 import { IdbService } from '../services/idb.service';
 import { RequestQueue } from '../models/request-queue';
 import { concatMap, flatMap, map, mergeMap, switchMap } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { CustomAlertComponent } from '../shared/custom-alert/custom-alert.component';
 
 @Injectable()
